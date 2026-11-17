@@ -170,142 +170,180 @@
       }
     }
 
-    /* ================= 1. 메인 커버 카드 ================= */
+/* ================= 1. 메인 커버 카드 (그림일기 스타일) ================= */
     .cover-card {
-      text-align: center;
-      padding-top: 32px;
-      padding-bottom: 30px;
-      background: linear-gradient(180deg, #EBF6FF 0%, #E1F1FF 100%);
+      padding: 18px 14px 22px;
+      background-color: #F6F5F0;
+      /* 구겨진 도화지 느낌의 은은한 종이 질감 */
+      background-image:
+        linear-gradient(125deg, rgba(255,255,255,0.7) 0%, rgba(225,222,214,0.25) 30%, rgba(255,255,255,0.6) 55%, rgba(220,217,208,0.28) 80%, rgba(255,255,255,0.65) 100%),
+        linear-gradient(38deg, rgba(230,226,216,0.25) 0%, transparent 45%, rgba(255,255,255,0.5) 70%, rgba(225,221,212,0.25) 100%);
+      border: 2px solid #E5E2D8;
+      color: #1E1E1E;
     }
 
-    .cover-sun {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      width: 44px;
-      height: 44px;
+    .diary-sheet {
+      border: 2px solid #222222;
+      background-color: rgba(255, 255, 255, 0.35);
     }
 
-    .cover-star-left {
-      position: absolute;
-      top: 24px;
-      left: 20px;
-      width: 28px;
-      height: 28px;
+    /* 상단: 제목 + 오늘의 날씨 */
+    .diary-header {
+      display: grid;
+      grid-template-columns: 1.65fr 1fr;
+      border-bottom: 2px solid #222222;
+      font-family: var(--font-hand);
     }
 
-    .cover-kicker {
-      display: inline-flex;
+    .diary-title-cell {
+      display: flex;
       align-items: center;
       gap: 6px;
-      background-color: var(--white);
-      color: var(--denim);
-      font-family: var(--font-hand);
-      font-size: 19px;
-      font-weight: 700;
-      padding: 5px 16px;
-      border-radius: 999px;
-      border: 2px dashed var(--sunny);
-      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-right: 2px solid #222222;
     }
 
-    .cover-title {
-      font-family: var(--font-hand);
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--denim);
-      line-height: 1.15;
-      margin-bottom: 6px;
+    .diary-label-sm {
+      font-size: 14px;
+      color: #444444;
+      white-space: nowrap;
     }
 
-    .cover-title .highlight {
+    .diary-main-title {
+      font-size: clamp(24px, 6.8vw, 30px);
+      font-weight: 700;
+      color: #1E1E1E;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+
+    .diary-cake-svg {
+      width: 30px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .diary-weather-cell {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .diary-weather-top {
+      font-size: 13px;
+      padding: 2px 4px;
+      border-bottom: 1.5px solid #222222;
+      color: #333333;
+    }
+
+    .diary-weather-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 4px 5px;
+      font-size: 14px;
+      font-weight: 700;
+      flex: 1;
+    }
+
+    .weather-sunny {
+      position: relative;
       display: inline-block;
-      background: linear-gradient(transparent 62%, var(--sunny) 62%);
-      padding: 0 4px;
+      padding: 0 3px;
     }
 
-    .cover-sub {
-      font-size: 15.5px;
-      color: var(--text-sub);
-      margin-bottom: 22px;
+    .weather-circle-svg {
+      position: absolute;
+      inset: -4px -6px;
+      width: calc(100% + 12px);
+      height: calc(100% + 8px);
+      pointer-events: none;
     }
 
-    .cover-photo-frame {
-      position: relative;
+    /* 중간: 아기 사진 영역 */
+    .diary-photo-box {
       width: 100%;
-      max-width: 310px;
-      margin: 0 auto 22px;
-      padding: 10px;
-      background-color: var(--white);
-      border-radius: 28px;
-      box-shadow: 0 12px 24px rgba(44, 94, 138, 0.12);
-      transform: rotate(-1deg);
-    }
-
-    .cover-photo-inner {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      border-radius: 20px;
+      aspect-ratio: 4 / 3;
+      background-color: #EFECE6;
       overflow: hidden;
-      background-color: var(--bg-butter);
-      position: relative;
     }
 
-    .cover-photo-inner img {
+    .diary-photo-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .sticker-crown {
-      position: absolute;
-      top: -16px;
-      left: 50%;
-      transform: translateX(-50%) rotate(3deg);
-      width: 44px;
-      height: 44px;
-      z-index: 2;
-      filter: drop-shadow(0 3px 4px rgba(44, 94, 138, 0.16));
+    /* 하단: 10칸 x 6줄 일기 원고지 */
+    .diary-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      border-top: 2px solid #222222;
     }
 
-    .sticker-heart {
-      position: absolute;
-      bottom: -10px;
-      right: -6px;
-      width: 38px;
-      height: 38px;
-      z-index: 2;
-    }
-
-    .cover-summary {
-      background-color: var(--white);
-      border-radius: 20px;
-      padding: 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      border: 2px solid var(--sunny-soft);
-    }
-
-    .summary-row {
+    .diary-grid span {
+      aspect-ratio: 1 / 1.05;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      font-size: 15px;
-      color: var(--text-main);
+      border-right: 1.5px solid #222222;
+      border-bottom: 1.5px solid #222222;
+      font-family: var(--font-hand);
+      font-size: clamp(20px, 5.6vw, 25px);
+      font-weight: 700;
+      color: #1E1E1E;
+      line-height: 1;
+    }
+
+    .diary-grid span:nth-child(10n) {
+      border-right: none;
+    }
+
+    .diary-grid span:nth-last-child(-n + 10) {
+      border-bottom: none;
+    }
+
+    /* 일기장 아래 날짜 / 장소 / 가족 정보 */
+    .diary-footer-info {
+      padding: 16px 6px 2px;
+      font-family: var(--font-hand);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .diary-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #222222;
       word-break: keep-all;
     }
 
-    .summary-row strong {
-      color: var(--denim);
-      font-weight: 400;
-      text-decoration: underline;
-      text-decoration-color: var(--sunny);
-      text-decoration-thickness: 3px;
-      text-underline-offset: 3px;
+    .diary-info-key {
+      color: #E07A3F;
+      font-weight: 700;
+      flex-shrink: 0;
+      min-width: 34px;
     }
+
+    .diary-family-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 4px;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .fam-dad { color: #2C5E8A; }
+    .fam-baby { color: #D9534F; }
+    .fam-mom { color: #E07A3F; }
+    .fam-name { color: #222222; margin-left: 3px; }
 
     /* ================= 2. 초대장 본문 카드 ================= */
     .invite-card {
@@ -781,61 +819,70 @@
   <main class="invitation-wrap">
 
     <!-- ==================== 1. 메인 커버 ==================== -->
-    <section class="card cover-card" aria-label="초대장 표지">
-      <svg class="cover-sun deco-float" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <circle cx="32" cy="32" r="14" fill="#FFD166" />
-        <path d="M32 6V13M32 51V58M6 32H13M51 32H58M13.6 13.6L18.6 18.6M45.4 45.4L50.4 50.4M50.4 13.6L45.4 18.6M18.6 45.4L13.6 50.4" stroke="#FFD166" stroke-width="4" stroke-linecap="round" />
-      </svg>
-
-      <svg class="cover-star-left deco-twinkle" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <path d="M18 2L21.5 12.5L32 16L21.5 19.5L18 30L14.5 19.5L4 16L14.5 12.5L18 2Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="2" stroke-linejoin="round" />
-      </svg>
-
-      <div class="cover-kicker">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD166" aria-hidden="true">
-          <path d="M12 2L14.9 8.6L22 9.3L16.6 14L18.2 21L12 17.3L5.8 21L7.4 14L2 9.3L9.1 8.6L12 2Z" />
-        </svg>
-        도영이의 첫 번째 생일파티
-      </div>
-
-      <h1 class="cover-title">
-        안녕, 나는 <span class="highlight">최도영</span>!
-      </h1>
-      <p class="cover-sub">반짝이는 도영이의 첫돌에 초대합니다</p>
-
-      <div class="cover-photo-frame">
-        <svg class="sticker-crown" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M6 34L10 14L19 23L24 10L29 23L38 14L42 34H6Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="2.5" stroke-linejoin="round" />
-          <rect x="6" y="34" width="36" height="6" rx="3" fill="#FFD166" stroke="#2C5E8A" stroke-width="2.5" />
-          <circle cx="24" cy="10" r="2.5" fill="#FFFDF2" stroke="#2C5E8A" stroke-width="2" />
-        </svg>
-
-        <div class="cover-photo-inner">
-          <img id="coverPhotoImg" src="" alt="최도영 아기 대표 사진" />
-        </div>
-
-        <svg class="sticker-heart deco-twinkle" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-          <path d="M20 34C20 34 6 24.8 6 14.5C6 10.2 9.4 7 13.5 7C16.1 7 18.5 8.4 20 10.5C21.5 8.4 23.9 7 26.5 7C30.6 7 34 10.2 34 14.5C34 24.8 20 34 20 34Z" fill="#FF8FA3" stroke="#2C5E8A" stroke-width="2.4" stroke-linejoin="round" />
-        </svg>
-      </div>
-
-      <div class="cover-summary">
-        <div class="summary-row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="16" rx="4" stroke="#2C5E8A" stroke-width="2" fill="#FFD166" fill-opacity="0.35" />
-            <path d="M8 3V7M16 3V7M3 10H21" stroke="#2C5E8A" stroke-width="2" stroke-linecap="round" />
-          </svg>
-          <strong>2027년 1월 2일 토요일 오후 1시 30분</strong>
-        </div>
-        <div class="summary-row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink: 0;">
-            <path d="M12 21C12 21 19 14.8 19 9.5C19 5.6 15.9 2.5 12 2.5C8.1 2.5 5 5.6 5 9.5C5 14.8 12 21 12 21Z" fill="#FFD166" fill-opacity="0.5" stroke="#2C5E8A" stroke-width="2" />
-            <circle cx="12" cy="9.5" r="2.5" fill="#2C5E8A" />
-          </svg>
-          <div class="summary-place">
-            <span class="summary-place-name">파티앳더시그널</span>
-            <span class="summary-place-addr">경기도 고양시 일산서구 탄중로 114-2 2층</span>
+<!-- ==================== 1. 메인 커버 (그림일기 스타일) ==================== -->
+    <section class="card cover-card" aria-label="도영이 그림일기 초대장 표지">
+      <div class="diary-sheet">
+        <!-- 상단 제목 + 날씨 -->
+        <div class="diary-header">
+          <div class="diary-title-cell">
+            <span class="diary-label-sm">제목</span>
+            <h1 class="diary-main-title">내 생일</h1>
+            <!-- 파란 크레용 케이크 SVG -->
+            <svg class="diary-cake-svg" viewBox="0 0 48 44" fill="none" aria-hidden="true">
+              <path d="M16 14V8M24 14V7M32 14V8" stroke="#2C5E8A" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M16 5C17 6.5 16.5 8 16 8C15.5 8 15 6.5 16 5ZM24 4C25 5.5 24.5 7 24 7C23.5 7 23 5.5 24 4ZM32 5C33 6.5 32.5 8 32 8C31.5 8 31 6.5 32 5Z" fill="#E05A47"/>
+              <rect x="8" y="15" width="32" height="22" rx="4" stroke="#2C5E8A" stroke-width="2.6" fill="#EBF6FF"/>
+              <path d="M8 23C12 26 16 20 20 23C24 26 28 20 32 23C36 26 38 22 40 23" stroke="#2C5E8A" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
           </div>
+
+          <div class="diary-weather-cell">
+            <div class="diary-weather-top">오늘의 날씨</div>
+            <div class="diary-weather-list">
+              <span class="weather-sunny">
+                맑음
+                <!-- 빨간 동그라미 SVG -->
+                <svg class="weather-circle-svg" viewBox="0 0 46 28" fill="none" aria-hidden="true">
+                  <path d="M23 3C11 3 3 8.5 3 14.5C3 20.8 11.5 25 23.5 25C35.5 25 43 19.5 43 13.5C43 7.5 33 4 21 4.5" stroke="#D9534F" stroke-width="2.4" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>흐림</span>
+              <span>눈</span>
+              <span>비</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 그림(사진) 영역 -->
+        <div class="diary-photo-box">
+          <img id="coverPhotoImg" src="" alt="최도영 아기 그림일기 사진" />
+        </div>
+
+        <!-- 10칸 x 6줄 일기 내용 (한 글자씩 자유롭게 수정 가능) -->
+        <div class="diary-grid" aria-label="그림일기 초대 글">
+          <span></span><span>저</span><span>의</span><span></span><span>첫</span><span></span><span>번</span><span>째</span><span></span><span></span>
+          <span>생</span><span>일</span><span>파</span><span>티</span><span>에</span><span></span><span>초</span><span>대</span><span>를</span><span></span>
+          <span>합</span><span>니</span><span>다</span><span>.</span><span></span><span></span><span>즐</span><span>거</span><span>운</span><span></span>
+          <span>시</span><span>간</span><span></span><span></span><span>책</span><span>임</span><span>지</span><span>겠</span><span>습</span><span>니</span>
+          <span>다</span><span>.</span><span></span><span></span><span>사</span><span>랑</span><span>해</span><span>요</span><span>♡</span><span></span>
+          <span></span><span></span><span></span><span></span><span>-</span><span>도</span><span>영</span><span>이</span><span>가</span><span>-</span>
+        </div>
+      </div>
+
+      <!-- 일기장 하단 날짜/장소/가족 -->
+      <div class="diary-footer-info">
+        <div class="diary-info-row">
+          <span class="diary-info-key">날짜</span>
+          <span>2027. 01. 02 (토) pm 1:30</span>
+        </div>
+        <div class="diary-info-row">
+          <span class="diary-info-key">장소</span>
+          <span>경기도 고양시 일산서구 탄중로 114-2 2층<br />파티앳더시그널</span>
+        </div>
+        <div class="diary-family-row">
+          <div><span class="fam-dad">아빠</span><span class="fam-name">최성원</span></div>
+          <div><span class="fam-baby">나</span><span class="fam-name">최도영</span></div>
+          <div><span class="fam-mom">엄마</span><span class="fam-name">이창민</span></div>
         </div>
       </div>
     </section>
