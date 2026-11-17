@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>윤호의 첫 번째 생일에 초대합니다</title>
+
+  <!-- 카카오톡 공유 시 미리보기(OG 태그) - 실제 도메인에 올린 후 수정하세요 -->
+  <meta property="og:title" content="윤호의 생일파티에 초대합니다" />
+  <meta property="og:description" content="2027년 1월 2일 토요일 오후 12시 · 더 플라자 지스텀하우스" />
+  <meta property="og:image" content="https://your-domain.com/cover.jpg" />
+
+  <!-- 구글 폰트: 깔끔한 본문 + 따뜻한 손글씨 느낌 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-outer: #f5f5f5;
+      --bg-card: #ffffff;
+      --text-main: #222222;
+      --text-sub: #666666;
+      --text-muted: #999999;
+      --accent: #e5987e;
+      --red-day: #c95b5b;
+      --line: #e8e8e8;
+      --font-sans: 'Noto Sans KR', sans-serif;
+      --font-hand-kr: 'Gowun Dodum', sans-serif;
+      --font-crayon: 'Gaegu', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-outer);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* 모바일 뷰포트 중앙 정렬 카드 */
+    .invitation-wrap {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      background-color: var(--bg-card);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.06);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 56px 26px;
+      text-align: center;
+    }
+
+    /* 스크롤 등장 애니메이션 */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media print {
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* 1. 메인 커버 */
+    .hero {
+      padding-top: 44px;
+      padding-bottom: 48px;
+    }
+    .hero-title {
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #333;
+      margin-bottom: 24px;
+    }
+    .hero-divider {
+      width: 100%;
+      height: 1px;
+      background-color: #333;
+      margin-bottom: 18px;
+    }
+    .hero-date {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 6px;
+    }
+    .hero-place {
+      font-size: 13px;
+      font-weight: 400;
+      color: #555;
+      margin-bottom: 32px;
+    }
+    .hero-photo-box {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      aspect-ratio: 3 / 4;
+      background: #faf6f0;
+    }
+    .hero-photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .confetti-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* 2. 인사말 섹션 */
+    .greeting-section {
+      padding-top: 32px;
+      padding-bottom: 20px;
+    }
+    .sun-icon {
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 24px;
+      color: #888;
+    }
+    .greeting-text {
+      font-family: var(--font-hand-kr);
+      font-size: 15.5px;
+      line-height: 2.1;
+      color: #333;
+      margin-bottom: 28px;
+      white-space: pre-line;
+    }
+    .parents-name {
+      font-family: var(--font-hand-kr);
+      font-size: 14.5px;
+      color: #444;
+      margin-bottom: 42px;
+      letter-spacing: 0.03em;
+    }
+    .full-photo {
+      margin: 0 -26px;
+      aspect-ratio: 1 / 1;
+      background: #f3efe9;
+      overflow: hidden;
+    }
+    .full-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 3. 날짜 & 달력 & 카운트다운 */
+    .date-banner {
+      padding-top: 64px;
+      padding-bottom: 36px;
+    }
+    .crayon-date {
+      font-family: var(--font-crayon);
+      font-size: 52px;
+      line-height: 1.05;
+      color: #a6a6a6;
+      letter-spacing: 0.02em;
+      margin-bottom: 64px;
+    }
+    .party-day-title {
+      font-family: var(--font-crayon);
+      font-size: 26px;
+      color: #333;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .party-day-kr {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    .party-day-en {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 34px;
+    }
+
+    /* 달력 */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      row-gap: 14px;
+      max-width: 320px;
+      margin: 0 auto 38px;
+      font-size: 13px;
+    }
+    .cal-head {
+      font-size: 12px;
+      color: var(--text-sub);
+      padding-bottom: 6px;
+    }
+    .cal-head.sun { color: var(--red-day); }
+    .cal-day {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      color: #333;
+    }
+    .cal-day.sun { color: var(--red-day); }
+    .cal-day.sat { color: #777; }
+    .cal-day.target span {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* D-Day 카운트다운 박스 */
+    .countdown-wrap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 320px;
+      margin: 0 auto 20px;
+    }
+    .cd-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 14px 6px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      border: 1px solid #f4f4f4;
+    }
+    .cd-num {
+      font-size: 20px;
+      font-weight: 500;
+      color: #222;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .cd-label {
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+    .dday-msg {
+      font-size: 13px;
+      color: #444;
+      margin-top: 16px;
+    }
+    .dday-msg .heart {
+      color: #d65a5a;
+      margin: 0 2px;
+    }
+
+    /* 공통 섹션 타이틀 */
+    .section-sparkle {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    /* 4. 갤러리 */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .gallery-item {
+      aspect-ratio: 1 / 1;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #f2f2f2;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    /* 라이트박스 모달 */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 82vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      color: #fff;
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* 5. 오시는 길 */
+    .location-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 24px 18px;
+      border: 1px solid #f0f0f0;
+      margin-bottom: 18px;
+    }
+    .venue-name {
+      font-size: 15.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .venue-addr {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+    }
+    .btn-copy-addr {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #444;
+      cursor: pointer;
+    }
+    .map-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .map-btn {
+      text-decoration: none;
+      padding: 11px 6px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #333;
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      transition: background 0.2s;
+    }
+    .map-btn:hover { background: #f8f8f8; }
+    .traffic-info {
+      text-align: left;
+      font-size: 12.5px;
+      color: var(--text-sub);
+      line-height: 1.8;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .traffic-info strong {
+      color: #333;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* 6. 공유하기 & 푸터 */
+    .share-section {
+      padding: 40px 26px 70px;
+      border-top: 1px solid #f2f2f2;
+      text-align: left;
+    }
+    .share-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 4px;
+      font-size: 13.5px;
+      color: #333;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      font-family: inherit;
+    }
+    .share-row.muted { color: var(--text-muted); }
+    .footer-note {
+      margin-top: 38px;
+      text-align: center;
+      font-size: 11.5px;
+      color: #bbb;
+      letter-spacing: 0.08em;
+    }
+
+    /* BGM 플로팅 버튼 */
+    .bgm-btn {
+      position: fixed;
+      right: max(18px, calc(50vw - 215px + 18px));
+      bottom: 24px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(34, 34, 34, 0.78);
+      backdrop-filter: blur(4px);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5px;
+      cursor: pointer;
+      z-index: 900;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .bgm-bar {
+      width: 2px;
+      height: 10px;
+      background: #fff;
+      border-radius: 2px;
+      transition: height 0.2s;
+    }
+    .bgm-btn.playing .bgm-bar {
+      animation: eq 0.8s infinite ease-in-out alternate;
+    }
+    .bgm-btn.playing .bgm-bar:nth-child(2) { animation-delay: 0.2s; }
+    .bgm-btn.playing .bgm-bar:nth-child(3) { animation-delay: 0.4s; }
+    .bgm-btn.playing .bgm-bar:nth-child(4) { animation-delay: 0.1s; }
+    @keyframes eq {
+      0% { height: 4px; }
+      100% { height: 15px; }
+    }
+
+    /* 토스트 알림 */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(34, 34, 34, 0.9);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1100;
+      white-space: nowrap;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="invitation-wrap">
+
+    <!-- 배경음악 (mp3 파일 경로를 넣으면 작동합니다) -->
+    <audio id="bgmAudio" loop>
+      <!-- <source src="bgm.mp3" type="audio/mpeg" /> -->
+    </audio>
+    <button class="bgm-btn" id="bgmToggle" aria-label="배경음악 재생/정지" title="BGM 켜기/끄기">
+      <span class="bgm-bar"></span>
+      <span class="bgm-bar"></span>
+      <span class="bgm-bar"></span>
+      <span class="bgm-bar"></span>
+    </button>
+
+    <!-- 1. 메인 커버 -->
+    <section class="hero reveal visible">
+      <h1 class="hero-title">윤호의 생일파티에 초대합니다</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-date">2027년 1월 2일 토요일 오후 12시</p>
+      <p class="hero-place">더 플라자 지스텀하우스 (22층)</p>
+
+      <div class="hero-photo-box">
+        <!-- 실제 아기 사진 경로로 교체하세요 (예: src="./images/main.jpg") -->
+        <img id="heroImg" alt="윤호 메인 사진" />
+        <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+      </div>
+    </section>
+
+    <!-- 2. 초대 인사말 -->
+    <section class="greeting-section reveal">
+      <svg class="sun-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M32 28c2 0 3.5 1.5 3.5 3.5S34 35 32 35s-3.5-1.5-3.5-3.5 2-6 5.5-6c4.5 0 7.5 3.5 7.5 7.5 0 5-4 8.5-9 8.5-6 0-10.5-4.5-10.5-10.5" />
+        <path d="M32 8v6M32 50v6M8 32h6M50 32h6M15 15l4.5 4.5M44.5 44.5L49 49M49 15l-4.5 4.5M19.5 44.5L15 49" />
+      </svg>
+
+      <p class="greeting-text">작은 기적이 큰 사랑으로 가득한 이 날,
+여러분과 함께 나누고 싶습니다.
+
+따뜻한 마음으로 함께 해주시면
+감사하겠습니다.</p>
+
+      <p class="parents-name">아빠 김민수 · 엄마 이지영</p>
+
+      <div class="full-photo">
+        <!-- 실제 정사각형 아기 사진 경로로 교체하세요 -->
+        <img id="subImg" alt="윤호 웃는 사진" />
+      </div>
+    </section>
+
+    <!-- 3. 날짜 & 달력 & 카운트다운 -->
+    <section class="date-banner reveal">
+      <div class="crayon-date">Jan 2<br />2027</div>
+
+      <h2 class="party-day-title">PARTY DAY</h2>
+      <p class="party-day-kr">2027년 1월 2일 토요일 | 오후 12시</p>
+      <p class="party-day-en">Saturday, January 2, 2027 | PM 12:00</p>
+
+      <div class="calendar-grid" id="calendarGrid"></div>
+
+      <div class="countdown-wrap">
+        <div class="cd-box">
+          <div class="cd-num" id="cdDays">0</div>
+          <div class="cd-label">DAYS</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-num" id="cdHours">0</div>
+          <div class="cd-label">HOURS</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-num" id="cdMinutes">0</div>
+          <div class="cd-label">MINUTES</div>
+        </div>
+        <div class="cd-box">
+          <div class="cd-num" id="cdSeconds">0</div>
+          <div class="cd-label">SECONDS</div>
+        </div>
+      </div>
+
+      <p class="dday-msg" id="ddayText">윤호의 첫 생일 <span class="heart">♥</span> 계산 중...</p>
+    </section>
+
+    <!-- 4. 갤러리 -->
+    <section class="reveal">
+      <span class="section-sparkle">✦</span>
+      <h2 class="section-title">GALLERY</h2>
+      <p class="section-sub">윤호의 소중한 성장 순간들</p>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- 5. 오시는 길 -->
+    <section class="reveal">
+      <span class="section-sparkle" style="color:#333;">✦</span>
+      <h2 class="section-title">LOCATION</h2>
+      <p class="section-sub">오시는 길을 안내해 드립니다</p>
+
+      <div class="location-card">
+        <p class="venue-name">더 플라자 지스텀하우스 (22층)</p>
+        <p class="venue-addr" id="venueAddr">서울 중구 소공로 119</p>
+        <button class="btn-copy-addr" onclick="copyText('서울 중구 소공로 119', '주소가 복사되었습니다.')">
+          주소 복사하기
+        </button>
+      </div>
+
+      <div class="map-buttons">
+        <a class="map-btn" href="https://map.naver.com/p/search/더플라자호텔" target="_blank" rel="noopener">네이버 지도</a>
+        <a class="map-btn" href="https://map.kakao.com/?q=더플라자호텔" target="_blank" rel="noopener">카카오맵</a>
+        <a class="map-btn" href="https://surl.tmobiapi.com/search?q=더플라자호텔" target="_blank" rel="noopener">티맵</a>
+      </div>
+
+      <div class="traffic-info">
+        <strong>주차 안내</strong>
+        돌잔치장 앞 주차장 이용 가능(돌잔치 참석 시 무료 주차 지원)
+      </div>
+    </section>
+
+    <!-- 6. 공유하기 -->
+    <section class="share-section reveal">
+      <button class="share-row" onclick="sharePage()">
+        <span>초대장 공유하기</span>
+        <span>↗</span>
+      </button>
+      <button class="share-row muted" onclick="copyText(window.location.href, '초대장 주소가 복사되었습니다.')">
+        <span>초대장 주소 복사하기</span>
+        <span></span>
+      </button>
+
+      <div class="footer-note">YUNHO'S 1ST BIRTHDAY</div>
+    </section>
+
+  </main>
+
+  <!-- 사진 확대 모달 -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="닫기">&times;</button>
+    <img id="lightboxImg" src="" alt="확대 사진" />
+  </div>
+
+  <!-- 토스트 메시지 -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ==========================================
+    // 1. 기본 설정 (날짜, 임시 이미지 등)
+    // ==========================================
+    const EVENT_DATE = new Date('2027-01-02T12:00:00+09:00');
+    const BABY_NAME = '윤호';
+
+    function makePlaceholder(text, bg1, bg2) {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="${bg1}"/>
+              <stop offset="100%" stop-color="${bg2}"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="800" fill="url(#g)"/>
+          <circle cx="300" cy="340" r="80" fill="rgba(255,255,255,0.45)"/>
+          <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
+                font-family="sans-serif" font-size="26" fill="#6d5d53">${text}</text>
+        </svg>`;
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    document.getElementById('heroImg').src = makePlaceholder('메인 아기 사진 (3:4)', '#f6eadc', '#edd6be');
+    document.getElementById('subImg').src = makePlaceholder('인사말 아기 사진 (1:1)', '#f5e4d7', '#ebd0bc');
+
+    // 갤러리 이미지 목록 (실제 파일 경로 배열로 교체하세요)
+    const galleryImages = [
+      makePlaceholder('사진 1', '#f7ece1', '#ead7c3'),
+      makePlaceholder('사진 2', '#eef2e6', '#dce5cf'),
+      makePlaceholder('사진 3', '#f4e8e8', '#e8d4d4'),
+      makePlaceholder('사진 4', '#e9eff5', '#d5e0ec'),
+      makePlaceholder('사진 5', '#f5efe0', '#e9dec3'),
+      makePlaceholder('사진 6', '#f2e9f2', '#e4d5e4')
+    ];
+
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryImages.forEach((src) => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item';
+      div.innerHTML = `<img src="${src}" alt="아기 성장 사진" loading="lazy" />`;
+      div.onclick = () => openLightbox(src);
+      galleryGrid.appendChild(div);
+    });
+
+    // ==========================================
+    // 2. 달력 자동 생성 (2027년 1월)
+    // ==========================================
+    function renderCalendar(year, month, targetDay) {
+      const grid = document.getElementById('calendarGrid');
+      const weeks = ['일', '월', '화', '수', '목', '금', '토'];
+      weeks.forEach((w, idx) => {
+        const el = document.createElement('div');
+        el.className = 'cal-head' + (idx === 0 ? ' sun' : '');
+        el.textContent = w;
+        grid.appendChild(el);
+      });
+
+      const firstDay = new Date(year, month - 1, 1).getDay();
+      const lastDate = new Date(year, month, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) {
+        grid.appendChild(document.createElement('div'));
+      }
+      for (let d = 1; d <= lastDate; d++) {
+        const el = document.createElement('div');
+        const dow = (firstDay + d - 1) % 7;
+        let cls = 'cal-day';
+        if (dow === 0 || (month === 1 && d === 1)) cls += ' sun';
+        else if (dow === 6) cls += ' sat';
+        if (d === targetDay) cls += ' target';
+        el.className = cls;
+        el.innerHTML = `<span>${d}</span>`;
+        grid.appendChild(el);
+      }
+    }
+    renderCalendar(2027, 1, 2);
+
+    // ==========================================
+    // 3. 실시간 D-Day 카운트다운
+    // ==========================================
+    function updateCountdown() {
+      const now = new Date();
+      const diff = EVENT_DATE - now;
+
+      if (diff <= 0) {
+        document.getElementById('cdDays').textContent = '0';
+        document.getElementById('cdHours').textContent = '0';
+        document.getElementById('cdMinutes').textContent = '0';
+        document.getElementById('cdSeconds').textContent = '0';
+        document.getElementById('ddayText').innerHTML = `${BABY_NAME}의 첫 생일을 축하해 주셔서 감사합니다 <span class="heart">♥</span>`;
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('cdDays').textContent = days;
+      document.getElementById('cdHours').textContent = hours;
+      document.getElementById('cdMinutes').textContent = minutes;
+      document.getElementById('cdSeconds').textContent = seconds;
+
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const eventStart = new Date(EVENT_DATE.getFullYear(), EVENT_DATE.getMonth(), EVENT_DATE.getDate());
+      const dayDiff = Math.round((eventStart - todayStart) / (1000 * 60 * 60 * 24));
+
+      document.getElementById('ddayText').innerHTML =
+        `${BABY_NAME}의 첫 생일 <span class="heart">♥</span> ${dayDiff}일 남았습니다`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ==========================================
+    // 4. 스크롤 등장 애니메이션
+    // ==========================================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // ==========================================
+    // 5. 유틸리티 (복사, 모달, BGM, 컨페티)
+    // ==========================================
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function copyText(text, msg) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => showToast(msg));
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast(msg);
+      }
+    }
+
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: '윤호의 생일파티에 초대합니다',
+          text: '2027년 1월 2일 토요일 오후 12시 · 더 플라자 지스텀하우스',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        copyText(window.location.href, '공유할 수 있는 초대장 주소가 복사되었습니다.');
+      }
+    }
+
+    // BGM 토글
+    const bgmBtn = document.getElementById('bgmToggle');
+    const bgmAudio = document.getElementById('bgmAudio');
+    bgmBtn.addEventListener('click', () => {
+      if (!bgmAudio.querySelector('source')) {
+        bgmBtn.classList.toggle('playing');
+        showToast('HTML 코드에 mp3 파일을 연결하면 음악이 재생됩니다.');
+        return;
+      }
+      if (bgmAudio.paused) {
+        bgmAudio.play();
+        bgmBtn.classList.add('playing');
+      } else {
+        bgmAudio.pause();
+        bgmBtn.classList.remove('playing');
+      }
+    });
+
+    // 커버 사진 위 은은한 컨페티 애니메이션
+    (function initConfetti() {
+      const canvas = document.getElementById('confettiCanvas');
+      const ctx = canvas.getContext('2d');
+      const colors = ['#f4c2c2', '#fde293', '#a8d8ea', '#d6c4e8'];
+      let w, h;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const pieces = Array.from({ length: 18 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 4 + 3,
+        vy: Math.random() * 0.7 + 0.3,
+        vx: (Math.random() - 0.5) * 0.5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        angle: Math.random() * Math.PI * 2
+      }));
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        pieces.forEach((p) => {
+          p.y += p.vy;
+          p.x += p.vx;
+          p.angle += 0.03;
+          if (p.y > h) { p.y = -10; p.x = Math.random() * w; }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.angle);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = 0.75;
+          ctx.fillRect(-p.r / 2, -p.r, p.r, p.r * 1.8);
+          ctx.restore();
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
