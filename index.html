@@ -8,45 +8,21 @@
   <!-- 카카오톡 등 공유 시 미리보기용 오픈그래프 태그 -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="최도영의 첫 번째 생일에 초대합니다!" />
-  <meta property="og:description" content="2027년 1월 2일 토요일 오후 1시 30분 · 도영이의 큰 일에 동참해주세요!" />
+  <meta property="og:description" content="2027년 1월 2일 토요일 오후 1시 30분 · 파티앳더시그널" />
 
-  <!-- 1차: 구글 웹폰트 (제목/숫자용 Gaegu & Dongle, 본문용 Gowun Dodum) -->
+  <!-- 구글 웹폰트: 그림일기 손글씨 느낌 (Hi Melody, Nanum Pen Script, Gaegu) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Hi+Melody&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
 
-  <!-- 2차 백업: 모바일에서 구글 폰트가 느릴 때를 대비한 jsDelivr CDN (Gaegu 한글) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/korean-400.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/korean-700.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/latin-400.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/latin-700.min.css" />
+  <!-- 모바일 웹폰트 백업 CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/hi-melody/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/nanum-pen-script/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu/korean-400.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu/korean-700.min.css" />
 
   <style>
-    /* 2차 백업: 눈누(jsDelivr) 단일 WOFF 웹폰트 (모바일 인앱 브라우저 호환성 강화) */
-    @font-face {
-      font-family: 'DongleFallback';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108_2@1.0/Dongle-Regular.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'DongleFallback';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108_2@1.0/Dongle-Bold.woff') format('woff');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'GowunDodumFallback';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
+    /* 첫 화면 그림일기용 폰트 (상상토끼 신비7살체) */
     @font-face {
       font-family: 'ShinbiIsSevenYearsOld';
       src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.1/SangSangShinb7.woff') format('woff');
@@ -55,21 +31,18 @@
     }
 
     :root {
-      --bg-butter: #FFFDF2;
-      --card-sky: #EBF6FF;
-      --card-sky-deep: #D8EEFF;
-      --denim: #2C5E8A;
-      --denim-dark: #1E4466;
-      --sunny: #FFD166;
-      --sunny-soft: #FFE6A7;
-      --text-main: #243B53;
-      --text-sub: #486581;
-      --white: #FFFFFF;
-      --radius-card: 24px;
-      --shadow-card: 0 10px 26px rgba(44, 94, 138, 0.08);
-      --font-hand: 'Gaegu', 'DongleFallback', cursive, sans-serif;
-      --font-bubble: 'Dongle', 'DongleFallback', 'Gaegu', cursive, sans-serif;
-      --font-body: 'Gowun Dodum', 'GowunDodumFallback', -apple-system, BlinkMacSystemFont, sans-serif;
+      --bg-paper: #EFECE3;
+      --paper-sheet: #FAF9F5;
+      --paper-white: #FFFFFF;
+      --ink: #222222;
+      --ink-soft: #555555;
+      --blue: #2B6CB0;
+      --red: #D9534F;
+      --orange: #D97724;
+      --font-diary: 'ShinbiIsSevenYearsOld', 'Hi Melody', 'Gaegu', cursive;
+      --font-note: 'Hi Melody', 'Nanum Pen Script', 'Gaegu', cursive;
+      --font-pen: 'Nanum Pen Script', 'Hi Melody', 'Gaegu', cursive;
+      --font-title: 'Gaegu', 'Hi Melody', cursive;
     }
 
     * {
@@ -84,144 +57,125 @@
     }
 
     body {
-      background-color: var(--bg-butter);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.7;
+      background-color: var(--bg-paper);
+      color: var(--ink);
+      font-family: var(--font-note);
+      line-height: 1.65;
       overflow-x: hidden;
-      background-image: radial-gradient(rgba(255, 209, 102, 0.28) 1.5px, transparent 1.5px);
-      background-size: 24px 24px;
+      /* 스케치북 도화지 모눈 배경 */
+      background-image:
+        linear-gradient(90deg, rgba(34, 34, 34, 0.025) 1px, transparent 1px),
+        linear-gradient(rgba(34, 34, 34, 0.025) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
 
-    /* 모바일 480px 중앙 정렬 컨테이너 */
+    /* 모바일 450px 중앙 정렬 */
     .invitation-wrap {
       width: 100%;
-      max-width: 480px;
+      max-width: 450px;
       margin: 0 auto;
-      padding: 20px 16px 48px;
+      padding: 18px 14px 48px;
       display: flex;
       flex-direction: column;
       gap: 22px;
       position: relative;
     }
 
-    /* 공통 카드 스타일 */
+    /* 일기장 공통 카드 (2px 진한 먹색 테두리) */
     .card {
-      background-color: var(--card-sky);
-      border-radius: var(--radius-card);
-      padding: 28px 22px;
-      box-shadow: var(--shadow-card);
-      border: 2px solid rgba(255, 255, 255, 0.85);
+      background-color: var(--paper-sheet);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      padding: 22px 16px;
+      box-shadow: 4px 4px 0 rgba(34, 34, 34, 0.12);
       position: relative;
       overflow: hidden;
     }
 
-    .card-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background-color: var(--sunny);
-      color: var(--denim-dark);
-      font-family: var(--font-hand);
-      font-size: 18px;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 999px;
-      box-shadow: 0 3px 0 rgba(44, 94, 138, 0.14);
-      margin-bottom: 12px;
-    }
-
     .section-header {
       text-align: center;
-      margin-bottom: 20px;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid var(--ink);
     }
 
-    .section-title {
-      font-family: var(--font-hand);
-      font-size: clamp(21px, 6vw, 26px); /* 기존 30px → 화면 크기에 맞춰 21~26px로 축소 */
+    .card-badge {
+      display: inline-block;
+      font-family: var(--font-title);
+      font-size: 16px;
       font-weight: 700;
-      color: var(--denim);
+      color: var(--paper-white);
+      background-color: var(--blue);
+      border: 2px solid var(--ink);
+      padding: 1px 12px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .card-badge.is-orange { background-color: var(--orange); }
+    .card-badge.is-red { background-color: var(--red); }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: clamp(23px, 6.4vw, 27px);
+      font-weight: 700;
+      color: var(--ink);
       line-height: 1.25;
-      letter-spacing: -0.5px;
       word-break: keep-all;
     }
 
     .section-subtitle {
-      font-size: 14px;
-      color: var(--text-sub);
-      margin-top: 4px;
+      font-family: var(--font-note);
+      font-size: 17px;
+      color: var(--ink-soft);
+      margin-top: 2px;
     }
 
-    /* 장식 SVG 애니메이션 */
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-5px) rotate(6deg); }
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.65; transform: scale(0.88); }
-    }
-
-    .deco-float {
-      animation: floatSlow 4s ease-in-out infinite;
-    }
-
-    .deco-twinkle {
-      animation: twinkle 2.8s ease-in-out infinite;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .deco-float, .deco-twinkle {
-        animation: none;
-      }
-    }
-
-/* ================= 1. 메인 커버 카드 (그림일기 스타일) ================= */
+    /* ================= 1. 메인 커버 (그림일기 스타일) ================= */
     .cover-card {
       padding: 18px 14px 22px;
       background-color: #F6F5F0;
-      /* 구겨진 도화지 느낌의 은은한 종이 질감 */
       background-image:
         linear-gradient(125deg, rgba(255,255,255,0.7) 0%, rgba(225,222,214,0.25) 30%, rgba(255,255,255,0.6) 55%, rgba(220,217,208,0.28) 80%, rgba(255,255,255,0.65) 100%),
         linear-gradient(38deg, rgba(230,226,216,0.25) 0%, transparent 45%, rgba(255,255,255,0.5) 70%, rgba(225,221,212,0.25) 100%);
-      border: 2px solid #E5E2D8;
-      color: #1E1E1E;
+      border: 2px solid var(--ink);
+      color: var(--ink);
     }
 
     .diary-sheet {
-      border: 2px solid #222222;
-      background-color: rgba(255, 255, 255, 0.35);
+      border: 2px solid var(--ink);
+      background-color: rgba(255, 255, 255, 0.38);
     }
 
     /* 상단: 제목 + 오늘의 날씨 */
     .diary-header {
       display: grid;
-      grid-template-columns: 1.5fr 1fr; /* 날씨 칸이 좁지 않게 비율 살짝 조정 */
-      border-bottom: 2px solid #222222;
-      font-family: 'ShinbiIsSevenYearsOld', var(--font-hand);
+      grid-template-columns: 1.48fr 1fr;
+      border-bottom: 2px solid var(--ink);
+      font-family: var(--font-diary);
     }
 
     .diary-title-cell {
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 10px;
-      border-right: 2px solid #222222;
+      padding: 6px 8px;
+      border-right: 2px solid var(--ink);
     }
 
     .diary-label-sm {
-      font-size: clamp(17px, 4.6vw, 20px); /* 기존 14px → 확대 */
+      font-size: clamp(17px, 4.6vw, 20px);
       color: #444444;
       white-space: nowrap;
     }
-    
+
     .diary-main-title {
-      font-size: clamp(32px, 8.8vw, 40px); /* 기존 24~30px → 확대 */
+      font-size: clamp(32px, 8.8vw, 40px);
       font-weight: normal;
-      color: #1E1E1E;
+      color: var(--ink);
       line-height: 1;
       letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     .diary-cake-svg {
@@ -237,9 +191,9 @@
     }
 
     .diary-weather-top {
-      font-size: clamp(15px, 4.2vw, 18px); /* 기존 13px → 확대 */
+      font-size: clamp(15px, 4.2vw, 18px);
       padding: 3px 4px;
-      border-bottom: 1.5px solid #222222;
+      border-bottom: 1.5px solid var(--ink);
       color: #333333;
     }
 
@@ -248,11 +202,15 @@
       align-items: center;
       justify-content: space-around;
       padding: 4px 3px;
-      font-size: clamp(16px, 4.4vw, 19px); /* 기존 14px → 확대 */
+      font-size: clamp(15px, 4.2vw, 18px);
       font-weight: normal;
       flex: 1;
     }
-    
+
+    .diary-weather-list span {
+      white-space: nowrap;
+    }
+
     .weather-sunny {
       position: relative;
       display: inline-block;
@@ -286,20 +244,20 @@
     .diary-grid {
       display: grid;
       grid-template-columns: repeat(10, 1fr);
-      border-top: 2px solid #222222;
+      border-top: 2px solid var(--ink);
     }
 
     .diary-grid span {
-      aspect-ratio: 1 / 1.1; /* 글씨가 커진 만큼 칸 세로도 살짝 여유있게 */
+      aspect-ratio: 1 / 1.1;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-right: 1.5px solid #222222;
-      border-bottom: 1.5px solid #222222;
-      font-family: 'ShinbiIsSevenYearsOld', var(--font-hand);
-      font-size: clamp(27px, 7.6vw, 34px); /* 칸 안에 꽉 차게 대폭 확대 */
+      border-right: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      font-family: var(--font-diary);
+      font-size: clamp(27px, 7.6vw, 34px);
       font-weight: normal;
-      color: #1E1E1E;
+      color: var(--ink);
       line-height: 1;
     }
 
@@ -314,7 +272,7 @@
     /* 일기장 아래 날짜 / 장소 / 가족 정보 */
     .diary-footer-info {
       padding: 18px 6px 4px;
-      font-family: 'ShinbiIsSevenYearsOld', var(--font-hand);
+      font-family: var(--font-diary);
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -324,21 +282,20 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: clamp(22px, 6vw, 26px); /* 기존 18px → 확대 */
+      font-size: clamp(22px, 6vw, 26px);
       line-height: 1.3;
-      color: #222222;
+      color: var(--ink);
       word-break: keep-all;
     }
 
-
     .diary-info-key {
-      color: #E07A3F;
+      color: var(--orange);
       font-weight: normal;
       flex-shrink: 0;
       min-width: 44px;
     }
 
-   .diary-family-row {
+    .diary-family-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -346,287 +303,252 @@
       gap: 6px;
       margin-top: 10px;
       padding: 0 2px;
-      font-size: clamp(22px, 6.2vw, 27px); /* 기존 19px → 확대 */
+      font-size: clamp(22px, 6.2vw, 27px);
       font-weight: normal;
     }
 
-    .fam-dad { color: #2C5E8A; }
-    .fam-baby { color: #D9534F; }
-    .fam-mom { color: #E07A3F; }
-    .fam-name { color: #222222; margin-left: 3px; }
+    .fam-dad { color: var(--blue); }
+    .fam-baby { color: var(--red); }
+    .fam-mom { color: var(--orange); }
+    .fam-name { color: var(--ink); margin-left: 3px; }
 
-    /* ================= 2. 초대장 본문 카드 ================= */
+    /* ================= 2. 초대장 본문 (줄공책 노트 스타일) ================= */
     .invite-card {
       text-align: center;
     }
 
     .invite-quote-box {
-      background-color: var(--white);
-      border-radius: 20px;
-      padding: 26px 18px;
-      margin-bottom: 18px;
-      position: relative;
-      border: 2px dashed rgba(44, 94, 138, 0.22);
+      background-color: var(--paper-white);
+      border: 2px solid var(--ink);
+      padding: 18px 14px;
+      margin-bottom: 16px;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 34px,
+        rgba(43, 108, 176, 0.18) 35px
+      );
     }
 
     .invite-quote {
-      font-family: var(--font-body);
-      font-size: 17.5px;
-      line-height: 1.95;
-      color: var(--denim-dark);
-      font-weight: 400;
+      font-family: var(--font-pen);
+      font-size: clamp(24px, 6.8vw, 29px);
+      line-height: 35px;
+      color: var(--ink);
       word-break: keep-all;
     }
 
     .invite-quote strong {
-      color: var(--denim);
+      color: var(--red);
       font-weight: 400;
-      background: linear-gradient(transparent 62%, var(--sunny-soft) 62%);
-      padding: 0 4px;
+      text-decoration: underline;
+      text-decoration-color: var(--orange);
+      text-decoration-thickness: 2.5px;
+      text-underline-offset: 4px;
     }
 
     .invite-story {
-      font-size: 15px;
-      color: var(--text-sub);
-      line-height: 1.85;
-      margin-bottom: 20px;
+      font-family: var(--font-note);
+      font-size: clamp(19px, 5.2vw, 21px);
+      color: var(--ink);
+      line-height: 1.75;
+      margin-bottom: 18px;
       word-break: keep-all;
     }
 
     .parents-pill {
-      display: inline-flex;
+      display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
       gap: 8px;
-      background-color: var(--bg-butter);
-      border: 2px solid var(--sunny);
-      border-radius: 18px;
-      padding: 12px 18px;
-      width: 100%;
+      border-top: 2px dashed var(--ink);
+      padding-top: 14px;
+      font-family: var(--font-note);
+      font-size: 20px;
     }
 
-    .parents-names {
-      font-size: 15.5px;
-      color: var(--text-main);
-    }
+    .parents-pill .tag-blue { color: var(--blue); font-weight: 700; }
+    .parents-pill .tag-red { color: var(--red); font-weight: 700; }
+    .parents-pill .tag-orange { color: var(--orange); font-weight: 700; }
 
-    .parents-names b {
-      font-family: var(--font-hand);
-      color: var(--denim);
-      font-size: 21px;
-      font-weight: 700;
-    }
-
-    .baby-tag {
-      display: inline-block;
-      background-color: var(--denim);
-      color: var(--white);
-      font-family: var(--font-hand);
-      font-size: 18px;
-      font-weight: 700;
-      padding: 2px 12px;
-      border-radius: 999px;
-    }
-
-    /* ================= 3. 디데이 & 미니 달력 카드 ================= */
+    /* ================= 3. 디데이 & 일기장 달력 ================= */
     .dday-card {
       text-align: center;
     }
 
     .dday-status-pill {
       display: inline-block;
-      background-color: var(--denim);
-      color: var(--sunny);
-      font-family: var(--font-hand);
-      font-size: 21px;
+      font-family: var(--font-title);
+      font-size: 20px;
       font-weight: 700;
-      padding: 5px 18px;
+      color: var(--red);
+      border: 2px solid var(--red);
+      background-color: var(--paper-white);
+      padding: 3px 16px;
       border-radius: 999px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 22px;
+      gap: 8px;
+      margin-bottom: 18px;
     }
 
     .countdown-item {
-      background-color: var(--white);
-      border-radius: 18px;
-      padding: 12px 6px 10px;
-      box-shadow: 0 5px 0 rgba(44, 94, 138, 0.1);
-      border: 2px solid var(--sunny-soft);
+      background-color: var(--paper-white);
+      border: 2px solid var(--ink);
+      padding: 10px 4px 8px;
     }
 
     .countdown-num {
-      font-family: var(--font-bubble);
-      font-size: 48px;
+      font-family: var(--font-title);
+      font-size: clamp(30px, 8vw, 36px);
       font-weight: 700;
-      line-height: 0.85;
-      color: var(--denim);
+      line-height: 1;
+      color: var(--blue);
       display: block;
     }
 
     .countdown-label {
-      font-family: var(--font-hand);
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-sub);
-      margin-top: 4px;
+      font-family: var(--font-note);
+      font-size: 16px;
+      color: var(--orange);
+      margin-top: 2px;
       display: block;
     }
 
-    /* 미니 달력 (2027년 1월) */
+    /* 일기장 달력 표 */
     .mini-calendar {
-      background-color: var(--white);
-      border-radius: 20px;
-      padding: 16px 14px;
+      background-color: var(--paper-white);
+      border: 2px solid var(--ink);
+      padding: 12px 10px;
     }
 
     .cal-month {
-      font-family: var(--font-hand);
-      font-size: 22px;
+      font-family: var(--font-title);
+      font-size: 20px;
       font-weight: 700;
-      color: var(--denim);
-      margin-bottom: 10px;
+      color: var(--ink);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1.5px dashed var(--ink);
     }
 
     .cal-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 4px;
-      font-size: 14px;
     }
 
     .cal-weekday {
-      font-family: var(--font-hand);
-      font-size: 17px;
+      font-family: var(--font-title);
+      font-size: 16px;
       font-weight: 700;
-      color: var(--text-sub);
+      color: var(--ink-soft);
       padding-bottom: 4px;
     }
 
-    .cal-weekday.sun { color: #E05A47; }
-    .cal-weekday.sat { color: var(--denim); }
+    .cal-weekday.sun { color: var(--red); }
+    .cal-weekday.sat { color: var(--blue); }
 
     .cal-day {
       height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      color: var(--text-main);
-      font-family: var(--font-hand);
-      font-size: 17px;
+      font-family: var(--font-note);
+      font-size: 18px;
+      color: var(--ink);
+      position: relative;
     }
 
-    .cal-day.sun { color: #E05A47; }
-    .cal-day.sat { color: var(--denim); }
+    .cal-day.sun { color: var(--red); }
+    .cal-day.sat { color: var(--blue); }
     .cal-day.empty { visibility: hidden; }
 
     .cal-day.dday-mark {
-      background-color: var(--sunny);
-      color: var(--denim-dark);
+      color: var(--red);
       font-weight: 700;
-      position: relative;
-      box-shadow: 0 3px 0 rgba(44, 94, 138, 0.2);
     }
 
-    /* ================= 4. 갤러리 (12장) 카드 ================= */
+    .cal-dday-circle {
+      position: absolute;
+      inset: 1px 4px;
+      width: calc(100% - 8px);
+      height: calc(100% - 2px);
+      pointer-events: none;
+    }
+
+    /* ================= 4. 갤러리 (12장 스케치북 액자) ================= */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 9px;
+      gap: 8px;
     }
 
     .gallery-item {
-      border: none;
-      background-color: var(--white);
-      border-radius: 16px;
+      border: 2px solid var(--ink);
+      background-color: var(--paper-white);
       padding: 4px;
       aspect-ratio: 1 / 1;
       cursor: pointer;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(44, 94, 138, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.15s ease;
     }
 
-    .gallery-item:hover,
-    .gallery-item:focus-visible {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 8px 16px rgba(44, 94, 138, 0.16);
-      outline: 2px solid var(--sunny);
+    .gallery-item:active {
+      transform: scale(0.96);
     }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 12px;
       display: block;
     }
 
     .gallery-hint {
       text-align: center;
-      font-size: 13.5px;
-      color: var(--text-sub);
-      margin-top: 14px;
+      font-family: var(--font-note);
+      font-size: 17px;
+      color: var(--ink-soft);
+      margin-top: 12px;
     }
 
-    /* ================= 5. 오시는 길 카드 ================= */
+    /* ================= 5. 오시는 길 ================= */
     .location-box {
-      background-color: var(--white);
-      border-radius: 20px;
-      padding: 18px 16px;
+      background-color: var(--paper-white);
+      border: 2px solid var(--ink);
+      padding: 16px 14px;
       text-align: center;
-      margin-bottom: 16px;
-      border: 2px solid var(--sunny-soft);
-    }
-
-    .location-address {
-      font-size: 16.5px;
-      color: var(--denim-dark);
-      word-break: keep-all;
-      margin-bottom: 6px;
-    }
-
-    /* 커버 요약 & 오시는 길 장소명 스타일 */
-    .summary-place {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1.45;
-    }
-
-    .summary-place-name {
-      font-family: var(--font-hand);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--denim);
-    }
-
-    .summary-place-addr {
-      font-size: 13.5px;
-      color: var(--text-sub);
+      margin-bottom: 14px;
     }
 
     .location-venue {
       display: inline-block;
-      font-family: var(--font-hand);
-      font-size: 25px;
+      font-family: var(--font-title);
+      font-size: 24px;
       font-weight: 700;
-      color: var(--denim);
-      background: linear-gradient(transparent 62%, var(--sunny-soft) 62%);
-      padding: 0 6px;
+      color: var(--blue);
+      border-bottom: 3px solid var(--orange);
       margin-bottom: 6px;
     }
 
+    .location-address {
+      font-family: var(--font-note);
+      font-size: 20px;
+      color: var(--ink);
+      word-break: keep-all;
+      margin-bottom: 4px;
+    }
+
     .location-note {
-      font-size: 14px;
-      color: var(--text-sub);
+      font-family: var(--font-note);
+      font-size: 17px;
+      color: var(--orange);
     }
 
     .btn-group {
@@ -645,63 +567,60 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      border: none;
-      border-radius: 16px;
-      padding: 13px 16px;
-      font-family: var(--font-hand);
+      gap: 7px;
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      padding: 11px 12px;
+      font-family: var(--font-title);
       font-size: 20px;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.15s ease, filter 0.15s ease;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     .btn:active {
-      transform: scale(0.98);
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--ink);
     }
 
     .btn-copy {
-      background-color: var(--sunny);
-      color: var(--denim-dark);
-      box-shadow: 0 4px 0 rgba(44, 94, 138, 0.18);
+      background-color: var(--orange);
+      color: var(--paper-white);
     }
 
     .btn-naver {
-      background-color: var(--denim);
-      color: var(--white);
-      box-shadow: 0 4px 0 var(--denim-dark);
+      background-color: var(--blue);
+      color: var(--paper-white);
     }
 
     .btn-kakao {
-      background-color: var(--white);
-      color: var(--denim);
-      border: 2px solid var(--denim);
-      box-shadow: 0 4px 0 rgba(44, 94, 138, 0.15);
+      background-color: var(--paper-white);
+      color: var(--ink);
     }
 
     /* ================= 푸터 ================= */
     .footer {
       text-align: center;
-      padding: 10px 8px 0;
-      color: var(--text-sub);
-      font-size: 14px;
+      padding: 8px 6px 0;
+      font-family: var(--font-note);
+      font-size: 18px;
+      color: var(--ink-soft);
     }
 
     .footer-title {
-      font-family: var(--font-hand);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--denim);
-      margin-top: 6px;
+      font-family: var(--font-pen);
+      font-size: 25px;
+      color: var(--ink);
+      margin-bottom: 2px;
     }
 
     /* ================= 모달 (갤러리 확대) ================= */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background-color: rgba(24, 46, 68, 0.88);
-      backdrop-filter: blur(4px);
+      background-color: rgba(20, 20, 20, 0.85);
       display: none;
       align-items: center;
       justify-content: center;
@@ -715,12 +634,12 @@
 
     .modal-dialog {
       width: 100%;
-      max-width: 440px;
-      background-color: var(--bg-butter);
-      border-radius: 24px;
-      padding: 16px;
-      position: relative;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      max-width: 420px;
+      background-color: var(--paper-sheet);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      padding: 14px;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
     }
 
     .modal-top {
@@ -731,37 +650,34 @@
     }
 
     .modal-counter {
-      font-family: var(--font-hand);
-      font-size: 20px;
+      font-family: var(--font-title);
+      font-size: 19px;
       font-weight: 700;
-      color: var(--denim);
-      background-color: var(--sunny);
-      padding: 2px 12px;
-      border-radius: 999px;
+      color: var(--paper-white);
+      background-color: var(--blue);
+      border: 2px solid var(--ink);
+      padding: 1px 12px;
+      border-radius: 4px;
     }
 
     .modal-close {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: none;
-      background-color: var(--card-sky);
-      color: var(--denim);
-      font-size: 20px;
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      background-color: var(--red);
+      color: var(--paper-white);
+      font-size: 18px;
       font-weight: 700;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .modal-img-wrap {
       width: 100%;
       aspect-ratio: 1 / 1;
-      border-radius: 18px;
+      border: 2px solid var(--ink);
+      background-color: var(--paper-white);
       overflow: hidden;
-      background-color: var(--white);
-      position: relative;
     }
 
     .modal-img-wrap img {
@@ -773,45 +689,45 @@
 
     .modal-caption {
       text-align: center;
-      font-family: var(--font-hand);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--denim);
-      margin-top: 10px;
+      font-family: var(--font-pen);
+      font-size: 25px;
+      color: var(--ink);
+      margin-top: 8px;
     }
 
     .modal-nav {
       display: flex;
-      justify-content: space-between;
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .modal-nav-btn {
       flex: 1;
-      border: none;
-      border-radius: 14px;
-      padding: 10px;
-      background-color: var(--card-sky);
-      color: var(--denim);
-      font-family: var(--font-hand);
-      font-size: 20px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      padding: 8px;
+      background-color: var(--paper-white);
+      color: var(--ink);
+      font-family: var(--font-title);
+      font-size: 19px;
       font-weight: 700;
       cursor: pointer;
+      box-shadow: 2px 2px 0 var(--ink);
     }
 
     /* ================= 토스트 메시지 ================= */
     .toast {
       position: fixed;
-      bottom: 28px;
+      bottom: 26px;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
-      background-color: var(--denim-dark);
-      color: var(--sunny);
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-size: 14.5px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      background-color: var(--ink);
+      color: var(--paper-white);
+      border: 2px solid var(--orange);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-family: var(--font-note);
+      font-size: 18px;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease, transform 0.25s ease;
@@ -828,8 +744,7 @@
 <body>
   <main class="invitation-wrap">
 
-    <!-- ==================== 1. 메인 커버 ==================== -->
-<!-- ==================== 1. 메인 커버 (그림일기 스타일) ==================== -->
+    <!-- ==================== 1. 메인 커버 (그림일기 스타일) ==================== -->
     <section class="card cover-card" aria-label="도영이 그림일기 초대장 표지">
       <div class="diary-sheet">
         <!-- 상단 제목 + 날씨 -->
@@ -839,10 +754,10 @@
             <h1 class="diary-main-title">내 생일</h1>
             <!-- 파란 크레용 케이크 SVG -->
             <svg class="diary-cake-svg" viewBox="0 0 48 44" fill="none" aria-hidden="true">
-              <path d="M16 14V8M24 14V7M32 14V8" stroke="#2C5E8A" stroke-width="2.4" stroke-linecap="round"/>
-              <path d="M16 5C17 6.5 16.5 8 16 8C15.5 8 15 6.5 16 5ZM24 4C25 5.5 24.5 7 24 7C23.5 7 23 5.5 24 4ZM32 5C33 6.5 32.5 8 32 8C31.5 8 31 6.5 32 5Z" fill="#E05A47"/>
-              <rect x="8" y="15" width="32" height="22" rx="4" stroke="#2C5E8A" stroke-width="2.6" fill="#EBF6FF"/>
-              <path d="M8 23C12 26 16 20 20 23C24 26 28 20 32 23C36 26 38 22 40 23" stroke="#2C5E8A" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M16 14V8M24 14V7M32 14V8" stroke="#2B6CB0" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M16 5C17 6.5 16.5 8 16 8C15.5 8 15 6.5 16 5ZM24 4C25 5.5 24.5 7 24 7C23.5 7 23 5.5 24 4ZM32 5C33 6.5 32.5 8 32 8C31.5 8 31 6.5 32 5Z" fill="#D9534F"/>
+              <rect x="8" y="15" width="32" height="22" rx="4" stroke="#2B6CB0" stroke-width="2.6" fill="#EBF6FF"/>
+              <path d="M8 23C12 26 16 20 20 23C24 26 28 20 32 23C36 26 38 22 40 23" stroke="#2B6CB0" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
           </div>
 
@@ -868,7 +783,7 @@
           <img id="coverPhotoImg" src="" alt="최도영 아기 그림일기 사진" />
         </div>
 
-        <!-- 10칸 x 6줄 일기 내용 (한 글자씩 자유롭게 수정 가능) -->
+        <!-- 10칸 x 6줄 일기 원고지 (한 글자씩 자유롭게 수정 가능) -->
         <div class="diary-grid" aria-label="그림일기 초대 글">
           <span></span><span>저</span><span>의</span><span></span><span>첫</span><span></span><span>번</span><span>째</span><span></span><span></span>
           <span>생</span><span>일</span><span>파</span><span>티</span><span>에</span><span></span><span>초</span><span>대</span><span>를</span><span></span>
@@ -879,7 +794,7 @@
         </div>
       </div>
 
-      <!-- 일기장 하단 날짜/장소/가족 -->
+      <!-- 일기장 하단 날짜 / 장소 / 가족 -->
       <div class="diary-footer-info">
         <div class="diary-info-row">
           <span class="diary-info-key">날짜</span>
@@ -887,7 +802,7 @@
         </div>
         <div class="diary-info-row">
           <span class="diary-info-key">장소</span>
-          <span>파티앳더시그널<br />경기도 고양시 일산서구 탄중로 114-2 2층</span>
+          <span>경기도 고양시 일산서구 탄중로 114-2 2층<br />파티앳더시그널</span>
         </div>
         <div class="diary-family-row">
           <div><span class="fam-dad">아빠</span><span class="fam-name">최성원</span></div>
@@ -900,12 +815,7 @@
     <!-- ==================== 2. 초대장 본문 ==================== -->
     <section class="card invite-card" aria-label="초대 글">
       <div class="section-header">
-        <span class="card-badge">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="#2C5E8A" aria-hidden="true">
-            <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" />
-          </svg>
-          초대합니다
-        </span>
+        <span class="card-badge is-red">초대합니다</span>
         <h2 class="section-title">작은 손으로 잡은 첫 번째 생일</h2>
       </div>
 
@@ -924,26 +834,16 @@
       </p>
 
       <div class="parents-pill">
-        <span class="parents-names">
-          아빠 <b>최성원</b> · 엄마 <b>이창민</b>
-        </span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF8FA3" aria-hidden="true">
-          <path d="M12 21C12 21 4 15.2 4 9.5C4 6.4 6.4 4 9.3 4C10.9 4 12 5.1 12 5.1C12 5.1 13.1 4 14.7 4C17.6 4 20 6.4 20 9.5C20 15.2 12 21 12 21Z" />
-        </svg>
-        <span class="baby-tag">아기 최도영</span>
+        <div><span class="tag-blue">아빠</span> 최성원</div>
+        <div><span class="tag-red">아기</span> 최도영</div>
+        <div><span class="tag-orange">엄마</span> 이창민</div>
       </div>
     </section>
 
-    <!-- ==================== 3. 디데이 카운트다운 ==================== -->
+    <!-- ==================== 3. 디데이 & 달력 ==================== -->
     <section class="card dday-card" aria-label="디데이 카운트다운">
       <div class="section-header">
-        <span class="card-badge">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5E8A" stroke-width="2.4" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 7V12L15 14" stroke-linecap="round" />
-          </svg>
-          두근두근 D-DAY
-        </span>
+        <span class="card-badge">D-DAY</span>
         <h2 class="section-title">도영이 만나는 날까지</h2>
       </div>
 
@@ -968,7 +868,7 @@
         </div>
       </div>
 
-      <!-- 2027년 1월 미니 달력 -->
+      <!-- 2027년 1월 달력 -->
       <div class="mini-calendar" aria-label="2027년 1월 달력">
         <div class="cal-month">2027년 1월 · 토요일 오후 1:30</div>
         <div class="cal-grid">
@@ -986,7 +886,12 @@
           <div class="cal-day empty"></div>
           <div class="cal-day empty"></div>
           <div class="cal-day">1</div>
-          <div class="cal-day sat dday-mark" aria-label="1월 2일 도영이 첫돌">2</div>
+          <div class="cal-day sat dday-mark" aria-label="1월 2일 도영이 첫돌">
+            2
+            <svg class="cal-dday-circle" viewBox="0 0 36 32" fill="none" aria-hidden="true">
+              <path d="M18 3C9 3 3 9 3 16C3 23 10 29 19 29C28 29 33 22 33 15C33 8 25 4 16 4.5" stroke="#D9534F" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
 
           <div class="cal-day sun">3</div>
           <div class="cal-day">4</div>
@@ -1028,32 +933,19 @@
     <!-- ==================== 4. 갤러리 (12장) ==================== -->
     <section class="card" aria-label="도영이 사진 갤러리">
       <div class="section-header">
-        <span class="card-badge">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5E8A" stroke-width="2.2" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="3" />
-            <circle cx="8.5" cy="10" r="1.5" fill="#2C5E8A" />
-            <path d="M4 17L9 12L13 16L16 13L20 17" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          성장 앨범
-        </span>
+        <span class="card-badge is-orange">성장 앨범</span>
         <h2 class="section-title">도영이의 열두 달 이야기</h2>
         <p class="section-subtitle">사진을 누르면 크게 볼 수 있어요</p>
       </div>
 
       <div id="galleryGrid" class="gallery-grid"></div>
-      <p class="gallery-hint">✨ 반짝반짝 빛난 1년의 순간들 (총 12장)</p>
+      <p class="gallery-hint">✏️ 반짝반짝 빛난 1년의 순간들 (총 12장)</p>
     </section>
 
     <!-- ==================== 5. 오시는 길 ==================== -->
     <section class="card" aria-label="오시는 길 안내">
       <div class="section-header">
-        <span class="card-badge">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2C5E8A" stroke-width="2.2" aria-hidden="true">
-            <path d="M12 21C12 21 19 14.5 19 9.5C19 5.6 15.9 2.5 12 2.5C8.1 2.5 5 5.6 5 9.5C5 14.5 12 21 12 21Z" />
-            <circle cx="12" cy="9.5" r="2.2" fill="#2C5E8A" />
-          </svg>
-          오시는 길
-        </span>
+        <span class="card-badge">오시는 길</span>
         <h2 class="section-title">여기로 오시면 돼요!</h2>
       </div>
 
@@ -1065,27 +957,15 @@
 
       <div class="btn-group">
         <button id="copyAddressBtn" type="button" class="btn btn-copy">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-            <rect x="9" y="9" width="11" height="11" rx="2" />
-            <path d="M5 15H4C2.9 15 2 14.1 2 13V4C2 2.9 2.9 2 4 2H13C14.1 2 15 2.9 15 4V5" />
-          </svg>
           행사장 주소 복사하기
         </button>
 
         <div class="btn-row">
           <a id="naverMapLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-naver">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="5" fill="#FFD166" />
-              <path d="M8.5 16.5V7.5H10.7L13.5 12.2V7.5H15.5V16.5H13.3L10.5 11.8V16.5H8.5Z" fill="#2C5E8A" />
-            </svg>
             네이버 지도
           </a>
 
           <a id="kakaoMapLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-kakao">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3C7.58 3 4 6.58 4 11C4 16.25 12 22 12 22C12 22 20 16.25 20 11C20 6.58 16.42 3 12 3Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="2" />
-              <circle cx="12" cy="10.5" r="2.5" fill="#2C5E8A" />
-            </svg>
             카카오맵
           </a>
         </div>
@@ -1094,10 +974,7 @@
 
     <!-- ==================== 푸터 ==================== -->
     <footer class="footer">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFD166" stroke="#2C5E8A" stroke-width="1.6" aria-hidden="true">
-        <path d="M12 2L14.9 8.6L22 9.3L16.6 14L18.2 21L12 17.3L5.8 21L7.4 14L2 9.3L9.1 8.6L12 2Z" />
-      </svg>
-      <p class="footer-title">도영이의 첫돌을 함께 빛내주셔서 감사합니다</p>
+      <p class="footer-title">- 도영이의 첫돌을 함께 축하해주셔서 감사합니다 -</p>
       <p>최성원 · 이창민 드림</p>
     </footer>
   </main>
@@ -1127,6 +1004,9 @@
     (function () {
       'use strict';
 
+      /* =====================================================================
+       * 1. 사진 설정 (실제 사진 넣을 때 아래 COVER_PHOTO와 GALLERY_PHOTOS만 수정!)
+       * ===================================================================== */
       function createSampleIllustration(opts) {
         var svg =
           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">' +
@@ -1143,7 +1023,7 @@
             '<path d="M55 310 L62 325 L78 327 L66 338 L69 354 L55 346 L41 354 L44 338 L32 327 L48 325 Z" fill="#FFD166"/>' +
             opts.art +
             '<rect x="70" y="325" width="260" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.92"/>' +
-            '<text x="200" y="354" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2C5E8A">' +
+            '<text x="200" y="354" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2B6CB0">' +
               opts.label +
             '</text>' +
           '</svg>';
@@ -1152,24 +1032,26 @@
 
       function babyFaceArt(hatColor, cheekColor) {
         return (
-          '<circle cx="200" cy="195" r="82" fill="#FFE8D6" stroke="#2C5E8A" stroke-width="5"/>' +
-          '<circle cx="118" cy="195" r="16" fill="#FFE8D6" stroke="#2C5E8A" stroke-width="4"/>' +
-          '<circle cx="282" cy="195" r="16" fill="#FFE8D6" stroke="#2C5E8A" stroke-width="4"/>' +
-          '<path d="M180 118 C185 95, 205 95, 200 116 C210 98, 224 106, 212 120" fill="none" stroke="#2C5E8A" stroke-width="5" stroke-linecap="round"/>' +
-          '<polygon points="162,124 200,56 238,124" fill="' + hatColor + '" stroke="#2C5E8A" stroke-width="5" stroke-linejoin="round"/>' +
-          '<circle cx="200" cy="52" r="11" fill="#FFD166" stroke="#2C5E8A" stroke-width="4"/>' +
-          '<circle cx="170" cy="190" r="8" fill="#2C5E8A"/>' +
-          '<circle cx="230" cy="190" r="8" fill="#2C5E8A"/>' +
+          '<circle cx="200" cy="195" r="82" fill="#FFE8D6" stroke="#222222" stroke-width="5"/>' +
+          '<circle cx="118" cy="195" r="16" fill="#FFE8D6" stroke="#222222" stroke-width="4"/>' +
+          '<circle cx="282" cy="195" r="16" fill="#FFE8D6" stroke="#222222" stroke-width="4"/>' +
+          '<path d="M180 118 C185 95, 205 95, 200 116 C210 98, 224 106, 212 120" fill="none" stroke="#222222" stroke-width="5" stroke-linecap="round"/>' +
+          '<polygon points="162,124 200,56 238,124" fill="' + hatColor + '" stroke="#222222" stroke-width="5" stroke-linejoin="round"/>' +
+          '<circle cx="200" cy="52" r="11" fill="#FFD166" stroke="#222222" stroke-width="4"/>' +
+          '<circle cx="170" cy="190" r="8" fill="#222222"/>' +
+          '<circle cx="230" cy="190" r="8" fill="#222222"/>' +
           '<circle cx="173" cy="187" r="2.5" fill="#FFFFFF"/>' +
           '<circle cx="233" cy="187" r="2.5" fill="#FFFFFF"/>' +
           '<ellipse cx="152" cy="212" rx="13" ry="8" fill="' + cheekColor + '" fill-opacity="0.7"/>' +
           '<ellipse cx="248" cy="212" rx="13" ry="8" fill="' + cheekColor + '" fill-opacity="0.7"/>' +
-          '<path d="M182 222 Q200 242 218 222" fill="none" stroke="#2C5E8A" stroke-width="5" stroke-linecap="round"/>'
+          '<path d="M182 222 Q200 242 218 222" fill="none" stroke="#222222" stroke-width="5" stroke-linecap="round"/>'
         );
       }
 
-      var COVER_PHOTO = './images/cover.png';
+      // ★ 대표 사진 교체 예시: var COVER_PHOTO = './images/cover.jpg';
+      var COVER_PHOTO = './images/cover.png'
 
+      // ★ 갤러리 사진 12장 교체 예시: { src: './images/1.jpg', caption: '1월 · ...' }
       var GALLERY_PHOTOS = [
         {
           src: createSampleIllustration({
@@ -1181,28 +1063,28 @@
         {
           src: createSampleIllustration({
             bg1: '#FFF3C4', bg2: '#EBF6FF', label: '2월 · 새근새근 꿈나라',
-            art: '<path d="M220 90 A75 75 0 1 0 285 215 A60 60 0 1 1 220 90 Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="5"/><circle cx="150" cy="175" r="55" fill="#FFFFFF" stroke="#2C5E8A" stroke-width="5"/><circle cx="205" cy="185" r="42" fill="#FFFFFF" stroke="#2C5E8A" stroke-width="5"/><rect x="115" y="185" width="120" height="42" rx="20" fill="#FFFFFF"/><path d="M140 175 Q150 185 160 175 M185 175 Q195 185 205 175" stroke="#2C5E8A" stroke-width="4" fill="none" stroke-linecap="round"/>'
+            art: '<path d="M220 90 A75 75 0 1 0 285 215 A60 60 0 1 1 220 90 Z" fill="#FFD166" stroke="#222222" stroke-width="5"/><circle cx="150" cy="175" r="55" fill="#FFFFFF" stroke="#222222" stroke-width="5"/><circle cx="205" cy="185" r="42" fill="#FFFFFF" stroke="#222222" stroke-width="5"/><rect x="115" y="185" width="120" height="42" rx="20" fill="#FFFFFF"/><path d="M140 175 Q150 185 160 175 M185 175 Q195 185 205 175" stroke="#222222" stroke-width="4" fill="none" stroke-linecap="round"/>'
           }),
           caption: '2월 · 새근새근 50일 무렵'
         },
         {
           src: createSampleIllustration({
             bg1: '#D8EEFF', bg2: '#EBF6FF', label: '3월 · 봄바람 옹알이',
-            art: '<circle cx="200" cy="175" r="78" fill="#FFD166" stroke="#2C5E8A" stroke-width="5"/><circle cx="176" cy="165" r="7" fill="#2C5E8A"/><circle cx="224" cy="165" r="7" fill="#2C5E8A"/><path d="M180 195 Q200 215 220 195" fill="none" stroke="#2C5E8A" stroke-width="5" stroke-linecap="round"/>'
+            art: '<circle cx="200" cy="175" r="78" fill="#FFD166" stroke="#222222" stroke-width="5"/><circle cx="176" cy="165" r="7" fill="#222222"/><circle cx="224" cy="165" r="7" fill="#222222"/><path d="M180 195 Q200 215 220 195" fill="none" stroke="#222222" stroke-width="5" stroke-linecap="round"/>'
           }),
           caption: '3월 · 아기 햇살 같은 미소'
         },
         {
           src: createSampleIllustration({
             bg1: '#FFE6A7', bg2: '#FFFDF2', label: '4월 · 백일의 기적',
-            art: '<rect x="125" y="165" width="150" height="95" rx="20" fill="#FFFFFF" stroke="#2C5E8A" stroke-width="5"/><path d="M125 190 Q162 212 200 190 Q238 212 275 190" fill="#FFD166" stroke="#2C5E8A" stroke-width="4"/><rect x="192" y="115" width="16" height="50" rx="6" fill="#93C5FD" stroke="#2C5E8A" stroke-width="4"/><path d="M200 84 C212 100 208 114 200 114 C192 114 188 100 200 84 Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="3"/>'
+            art: '<rect x="125" y="165" width="150" height="95" rx="20" fill="#FFFFFF" stroke="#222222" stroke-width="5"/><path d="M125 190 Q162 212 200 190 Q238 212 275 190" fill="#FFD166" stroke="#222222" stroke-width="4"/><rect x="192" y="115" width="16" height="50" rx="6" fill="#93C5FD" stroke="#222222" stroke-width="4"/><path d="M200 84 C212 100 208 114 200 114 C192 114 188 100 200 84 Z" fill="#FFD166" stroke="#222222" stroke-width="3"/>'
           }),
           caption: '4월 · 건강하게 자란 100일'
         },
         {
           src: createSampleIllustration({
             bg1: '#E0F2FE', bg2: '#D8EEFF', label: '5월 · 곰돌이 친구랑',
-            art: '<circle cx="145" cy="125" r="28" fill="#E9C46A" stroke="#2C5E8A" stroke-width="5"/><circle cx="255" cy="125" r="28" fill="#E9C46A" stroke="#2C5E8A" stroke-width="5"/><circle cx="200" cy="185" r="72" fill="#E9C46A" stroke="#2C5E8A" stroke-width="5"/><ellipse cx="200" cy="202" rx="28" ry="22" fill="#FFFDF2"/><circle cx="200" cy="194" r="7" fill="#2C5E8A"/><circle cx="172" cy="168" r="6" fill="#2C5E8A"/><circle cx="228" cy="168" r="6" fill="#2C5E8A"/>'
+            art: '<circle cx="145" cy="125" r="28" fill="#E9C46A" stroke="#222222" stroke-width="5"/><circle cx="255" cy="125" r="28" fill="#E9C46A" stroke="#222222" stroke-width="5"/><circle cx="200" cy="185" r="72" fill="#E9C46A" stroke="#222222" stroke-width="5"/><ellipse cx="200" cy="202" rx="28" ry="22" fill="#FFFDF2"/><circle cx="200" cy="194" r="7" fill="#222222"/><circle cx="172" cy="168" r="6" fill="#222222"/><circle cx="228" cy="168" r="6" fill="#222222"/>'
           }),
           caption: '5월 · 애착 인형과 낮잠'
         },
@@ -1216,21 +1098,21 @@
         {
           src: createSampleIllustration({
             bg1: '#D8EEFF', bg2: '#FFE6A7', label: '7월 · 시원한 물놀이',
-            art: '<ellipse cx="200" cy="205" rx="68" ry="48" fill="#FFD166" stroke="#2C5E8A" stroke-width="5"/><circle cx="228" cy="148" r="36" fill="#FFD166" stroke="#2C5E8A" stroke-width="5"/><polygon points="262,146 290,156 262,166" fill="#FF8FA3" stroke="#2C5E8A" stroke-width="4"/><circle cx="236" cy="140" r="5" fill="#2C5E8A"/><path d="M90 265 Q145 245 200 265 T310 265" fill="none" stroke="#2C5E8A" stroke-width="5" stroke-linecap="round"/>'
+            art: '<ellipse cx="200" cy="205" rx="68" ry="48" fill="#FFD166" stroke="#222222" stroke-width="5"/><circle cx="228" cy="148" r="36" fill="#FFD166" stroke="#222222" stroke-width="5"/><polygon points="262,146 290,156 262,166" fill="#FF8FA3" stroke="#222222" stroke-width="4"/><circle cx="236" cy="140" r="5" fill="#222222"/><path d="M90 265 Q145 245 200 265 T310 265" fill="none" stroke="#222222" stroke-width="5" stroke-linecap="round"/>'
           }),
           caption: '7월 · 오리 튜브 타고 첨벙첨벙'
         },
         {
           src: createSampleIllustration({
             bg1: '#EBF6FF', bg2: '#FFF3C4', label: '8월 · 부릉부릉 나들이',
-            art: '<path d="M125 225 L145 160 L255 160 L275 225 Z" fill="#93C5FD" stroke="#2C5E8A" stroke-width="5" stroke-linejoin="round"/><rect x="105" y="205" width="190" height="45" rx="18" fill="#FFD166" stroke="#2C5E8A" stroke-width="5"/><circle cx="148" cy="255" r="22" fill="#2C5E8A"/><circle cx="252" cy="255" r="22" fill="#2C5E8A"/><circle cx="148" cy="255" r="9" fill="#FFFDF2"/><circle cx="252" cy="255" r="9" fill="#FFFDF2"/>'
+            art: '<path d="M125 225 L145 160 L255 160 L275 225 Z" fill="#93C5FD" stroke="#222222" stroke-width="5" stroke-linejoin="round"/><rect x="105" y="205" width="190" height="45" rx="18" fill="#FFD166" stroke="#222222" stroke-width="5"/><circle cx="148" cy="255" r="22" fill="#222222"/><circle cx="252" cy="255" r="22" fill="#222222"/><circle cx="148" cy="255" r="9" fill="#FFFDF2"/><circle cx="252" cy="255" r="9" fill="#FFFDF2"/>'
           }),
           caption: '8월 · 여름 공원 소풍'
         },
         {
           src: createSampleIllustration({
             bg1: '#FFE6A7', bg2: '#D8EEFF', label: '9월 · 무지개 너머로',
-            art: '<path d="M90 245 A110 110 0 0 1 310 245" fill="none" stroke="#FF8FA3" stroke-width="18" stroke-linecap="round"/><path d="M112 245 A88 88 0 0 1 288 245" fill="none" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/><path d="M134 245 A66 66 0 0 1 266 245" fill="none" stroke="#93C5FD" stroke-width="18" stroke-linecap="round"/><circle cx="105" cy="250" r="26" fill="#FFFFFF" stroke="#2C5E8A" stroke-width="4"/><circle cx="295" cy="250" r="26" fill="#FFFFFF" stroke="#2C5E8A" stroke-width="4"/>'
+            art: '<path d="M90 245 A110 110 0 0 1 310 245" fill="none" stroke="#FF8FA3" stroke-width="18" stroke-linecap="round"/><path d="M112 245 A88 88 0 0 1 288 245" fill="none" stroke="#FFD166" stroke-width="18" stroke-linecap="round"/><path d="M134 245 A66 66 0 0 1 266 245" fill="none" stroke="#93C5FD" stroke-width="18" stroke-linecap="round"/><circle cx="105" cy="250" r="26" fill="#FFFFFF" stroke="#222222" stroke-width="4"/><circle cx="295" cy="250" r="26" fill="#FFFFFF" stroke="#222222" stroke-width="4"/>'
           }),
           caption: '9월 · 부쩍 자란 가을 도영이'
         },
@@ -1244,19 +1126,22 @@
         {
           src: createSampleIllustration({
             bg1: '#FFF3C4', bg2: '#EBF6FF', label: '11월 · 반짝이는 첫 눈',
-            art: '<polygon points="200,85 224,148 290,152 238,194 256,258 200,220 144,258 162,194 110,152 176,148" fill="#FFD166" stroke="#2C5E8A" stroke-width="5" stroke-linejoin="round"/><circle cx="182" cy="168" r="6" fill="#2C5E8A"/><circle cx="218" cy="168" r="6" fill="#2C5E8A"/><path d="M186 188 Q200 202 214 188" fill="none" stroke="#2C5E8A" stroke-width="5" stroke-linecap="round"/>'
+            art: '<polygon points="200,85 224,148 290,152 238,194 256,258 200,220 144,258 162,194 110,152 176,148" fill="#FFD166" stroke="#222222" stroke-width="5" stroke-linejoin="round"/><circle cx="182" cy="168" r="6" fill="#222222"/><circle cx="218" cy="168" r="6" fill="#222222"/><path d="M186 188 Q200 202 214 188" fill="none" stroke="#222222" stroke-width="5" stroke-linecap="round"/>'
           }),
           caption: '11월 · 곧 첫돌이 다가와요'
         },
         {
           src: createSampleIllustration({
             bg1: '#D8EEFF', bg2: '#FFE6A7', label: '12월 · 드디어 첫돌!',
-            art: '<path d="M110 230 L130 130 L175 170 L200 105 L225 170 L270 130 L290 230 Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="5" stroke-linejoin="round"/><rect x="110" y="230" width="180" height="32" rx="12" fill="#2C5E8A"/><circle cx="200" cy="98" r="10" fill="#FF8FA3" stroke="#2C5E8A" stroke-width="4"/>'
+            art: '<path d="M110 230 L130 130 L175 170 L200 105 L225 170 L270 130 L290 230 Z" fill="#FFD166" stroke="#222222" stroke-width="5" stroke-linejoin="round"/><rect x="110" y="230" width="180" height="32" rx="12" fill="#2B6CB0"/><circle cx="200" cy="98" r="10" fill="#FF8FA3" stroke="#222222" stroke-width="4"/>'
           }),
           caption: '12월 · 축하해, 우리 아기 최도영!'
         }
       ];
 
+      /* =====================================================================
+       * 2. 대표 사진 & 지도 링크 연결
+       * ===================================================================== */
       document.getElementById('coverPhotoImg').src = COVER_PHOTO;
 
       var VENUE_ADDRESS = '경기도 고양시 일산서구 탄중로 114-2 2층';
@@ -1267,6 +1152,9 @@
       document.getElementById('kakaoMapLink').href =
         'https://map.kakao.com/link/search/' + encodeURIComponent(SEARCH_ADDRESS);
 
+      /* =====================================================================
+       * 3. 실시간 D-Day 카운트다운 (2027-01-02 13:30:00 KST)
+       * ===================================================================== */
       var TARGET_DATE = new Date('2027-01-02T13:30:00+09:00').getTime();
       var elStatus = document.getElementById('ddayStatusPill');
       var elDays = document.getElementById('cdDays');
@@ -1314,6 +1202,9 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
 
+      /* =====================================================================
+       * 4. 갤러리 12장 렌더링 및 확대 모달
+       * ===================================================================== */
       var galleryGrid = document.getElementById('galleryGrid');
       var modal = document.getElementById('galleryModal');
       var modalImg = document.getElementById('modalImg');
@@ -1403,6 +1294,9 @@
         }
       }, { passive: true });
 
+      /* =====================================================================
+       * 5. 주소 복사 및 토스트 알림
+       * ===================================================================== */
       var copyBtn = document.getElementById('copyAddressBtn');
       var toastEl = document.getElementById('toast');
       var toastTimer = null;
