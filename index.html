@@ -47,6 +47,13 @@
       font-display: swap;
     }
 
+    @font-face {
+      font-family: 'ShinbiIsSevenYearsOld';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.1/SangSangShinb7.woff') format('woff');
+      font-weight: normal;
+      font-display: swap;
+    }
+
     :root {
       --bg-butter: #FFFDF2;
       --card-sky: #EBF6FF;
@@ -192,7 +199,7 @@
       display: grid;
       grid-template-columns: 1.65fr 1fr;
       border-bottom: 2px solid #222222;
-      font-family: var(--font-hand);
+      font-family: 'ShinbiIsSevenYearsOld', var(--font-hand); /* ← 여기 수정 */
     }
 
     .diary-title-cell {
@@ -289,9 +296,9 @@
       justify-content: center;
       border-right: 1.5px solid #222222;
       border-bottom: 1.5px solid #222222;
-      font-family: var(--font-hand);
-      font-size: clamp(20px, 5.6vw, 25px);
-      font-weight: 700;
+      font-family: 'ShinbiIsSevenYearsOld', var(--font-hand); /* ← 여기 수정 */
+      font-size: clamp(23px, 6.2vw, 28px); /* 신비7살체가 조금 작아 보이면 살짝 키워주세요 */
+      font-weight: normal;
       color: #1E1E1E;
       line-height: 1;
     }
@@ -307,7 +314,7 @@
     /* 일기장 아래 날짜 / 장소 / 가족 정보 */
     .diary-footer-info {
       padding: 16px 6px 2px;
-      font-family: var(--font-hand);
+      font-family: 'ShinbiIsSevenYearsOld', var(--font-hand); /* ← 여기 수정 */
       display: flex;
       flex-direction: column;
       gap: 6px;
