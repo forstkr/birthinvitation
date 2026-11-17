@@ -10,12 +10,43 @@
   <meta property="og:title" content="최도영의 첫 번째 생일에 초대합니다!" />
   <meta property="og:description" content="2027년 1월 2일 토요일 오후 1시 30분 · 도영이의 큰 일에 동참해주세요!" />
 
-  <!-- 구글 웹폰트: 제목/숫자용 Dongle & Gaegu, 본문용 Gowun Dodum -->
+  <!-- 1차: 구글 웹폰트 (제목/숫자용 Gaegu & Dongle, 본문용 Gowun Dodum) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet" />
 
+  <!-- 2차 백업: 모바일에서 구글 폰트가 느릴 때를 대비한 jsDelivr CDN (Gaegu 한글) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/korean-400.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/korean-700.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/latin-400.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/gaegu@5.3.0/latin-700.min.css" />
+
   <style>
+    /* 2차 백업: 눈누(jsDelivr) 단일 WOFF 웹폰트 (모바일 인앱 브라우저 호환성 강화) */
+    @font-face {
+      font-family: 'DongleFallback';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108_2@1.0/Dongle-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'DongleFallback';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108_2@1.0/Dongle-Bold.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'GowunDodumFallback';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --bg-butter: #FFFDF2;
       --card-sky: #EBF6FF;
@@ -29,6 +60,9 @@
       --white: #FFFFFF;
       --radius-card: 24px;
       --shadow-card: 0 10px 26px rgba(44, 94, 138, 0.08);
+      --font-hand: 'Gaegu', 'DongleFallback', cursive, sans-serif;
+      --font-bubble: 'Dongle', 'DongleFallback', 'Gaegu', cursive, sans-serif;
+      --font-body: 'Gowun Dodum', 'GowunDodumFallback', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     * {
@@ -45,10 +79,9 @@
     body {
       background-color: var(--bg-butter);
       color: var(--text-main);
-      font-family: 'Gowun Dodum', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-body);
       line-height: 1.7;
       overflow-x: hidden;
-      /* 아기자기한 도트 패턴 배경 포인트 */
       background-image: radial-gradient(rgba(255, 209, 102, 0.28) 1.5px, transparent 1.5px);
       background-size: 24px 24px;
     }
@@ -65,16 +98,7 @@
       position: relative;
     }
 
-    /* 타이포그래피 유틸 */
-    .font-title {
-      font-family: 'Gaegu', cursive;
-    }
-
-    .font-number {
-      font-family: 'Dongle', sans-serif;
-    }
-
-    /* 공통 카드 스타일 (구분선 대신 둥근 카드 사용) */
+    /* 공통 카드 스타일 */
     .card {
       background-color: var(--card-sky);
       border-radius: var(--radius-card);
@@ -91,8 +115,8 @@
       gap: 6px;
       background-color: var(--sunny);
       color: var(--denim-dark);
-      font-family: 'Gaegu', cursive;
-      font-size: 16px;
+      font-family: var(--font-hand);
+      font-size: 18px;
       font-weight: 700;
       padding: 4px 14px;
       border-radius: 999px;
@@ -106,8 +130,8 @@
     }
 
     .section-title {
-      font-family: 'Gaegu', cursive;
-      font-size: 28px;
+      font-family: var(--font-hand);
+      font-size: 30px;
       font-weight: 700;
       color: var(--denim);
       line-height: 1.25;
@@ -175,8 +199,8 @@
       gap: 6px;
       background-color: var(--white);
       color: var(--denim);
-      font-family: 'Gaegu', cursive;
-      font-size: 17px;
+      font-family: var(--font-hand);
+      font-size: 19px;
       font-weight: 700;
       padding: 5px 16px;
       border-radius: 999px;
@@ -185,8 +209,8 @@
     }
 
     .cover-title {
-      font-family: 'Gaegu', cursive;
-      font-size: 38px;
+      font-family: var(--font-hand);
+      font-size: 42px;
       font-weight: 700;
       color: var(--denim);
       line-height: 1.15;
@@ -200,7 +224,7 @@
     }
 
     .cover-sub {
-      font-size: 15px;
+      font-size: 15.5px;
       color: var(--text-sub);
       margin-bottom: 22px;
     }
@@ -268,13 +292,18 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--text-main);
       word-break: keep-all;
     }
 
     .summary-row strong {
       color: var(--denim);
+      font-weight: 400;
+      text-decoration: underline;
+      text-decoration-color: var(--sunny);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 3px;
     }
 
     /* ================= 2. 초대장 본문 카드 ================= */
@@ -292,9 +321,9 @@
     }
 
     .invite-quote {
-      font-family: 'Gowun Dodum', sans-serif;
-      font-size: 17px;
-      line-height: 1.9;
+      font-family: var(--font-body);
+      font-size: 17.5px;
+      line-height: 1.95;
       color: var(--denim-dark);
       font-weight: 400;
       word-break: keep-all;
@@ -302,14 +331,15 @@
 
     .invite-quote strong {
       color: var(--denim);
-      background: linear-gradient(transparent 66%, var(--sunny-soft) 66%);
-      padding: 0 3px;
+      font-weight: 400;
+      background: linear-gradient(transparent 62%, var(--sunny-soft) 62%);
+      padding: 0 4px;
     }
 
     .invite-story {
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--text-sub);
-      line-height: 1.8;
+      line-height: 1.85;
       margin-bottom: 20px;
       word-break: keep-all;
     }
@@ -323,7 +353,7 @@
       background-color: var(--bg-butter);
       border: 2px solid var(--sunny);
       border-radius: 18px;
-      padding: 12px 20px;
+      padding: 12px 18px;
       width: 100%;
     }
 
@@ -333,17 +363,20 @@
     }
 
     .parents-names b {
+      font-family: var(--font-hand);
       color: var(--denim);
-      font-size: 16.5px;
+      font-size: 21px;
+      font-weight: 700;
     }
 
     .baby-tag {
       display: inline-block;
       background-color: var(--denim);
       color: var(--white);
-      font-family: 'Gaegu', cursive;
-      font-size: 16px;
-      padding: 2px 10px;
+      font-family: var(--font-hand);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 2px 12px;
       border-radius: 999px;
     }
 
@@ -356,8 +389,8 @@
       display: inline-block;
       background-color: var(--denim);
       color: var(--sunny);
-      font-family: 'Gaegu', cursive;
-      font-size: 19px;
+      font-family: var(--font-hand);
+      font-size: 21px;
       font-weight: 700;
       padding: 5px 18px;
       border-radius: 999px;
@@ -380,17 +413,18 @@
     }
 
     .countdown-num {
-      font-family: 'Dongle', sans-serif;
-      font-size: 44px;
+      font-family: var(--font-bubble);
+      font-size: 48px;
       font-weight: 700;
-      line-height: 0.9;
+      line-height: 0.85;
       color: var(--denim);
       display: block;
     }
 
     .countdown-label {
-      font-family: 'Gaegu', cursive;
-      font-size: 15px;
+      font-family: var(--font-hand);
+      font-size: 17px;
+      font-weight: 700;
       color: var(--text-sub);
       margin-top: 4px;
       display: block;
@@ -404,8 +438,8 @@
     }
 
     .cal-month {
-      font-family: 'Gaegu', cursive;
-      font-size: 20px;
+      font-family: var(--font-hand);
+      font-size: 22px;
       font-weight: 700;
       color: var(--denim);
       margin-bottom: 10px;
@@ -415,12 +449,13 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 4px;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .cal-weekday {
-      font-family: 'Gaegu', cursive;
-      font-size: 15px;
+      font-family: var(--font-hand);
+      font-size: 17px;
+      font-weight: 700;
       color: var(--text-sub);
       padding-bottom: 4px;
     }
@@ -435,7 +470,8 @@
       justify-content: center;
       border-radius: 50%;
       color: var(--text-main);
-      font-size: 13.5px;
+      font-family: var(--font-hand);
+      font-size: 17px;
     }
 
     .cal-day.sun { color: #E05A47; }
@@ -486,7 +522,7 @@
 
     .gallery-hint {
       text-align: center;
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-sub);
       margin-top: 14px;
     }
@@ -502,15 +538,14 @@
     }
 
     .location-address {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 16.5px;
       color: var(--denim-dark);
       word-break: keep-all;
       margin-bottom: 6px;
     }
 
     .location-note {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--text-sub);
     }
 
@@ -533,9 +568,9 @@
       gap: 8px;
       border: none;
       border-radius: 16px;
-      padding: 14px 16px;
-      font-family: 'Gowun Dodum', sans-serif;
-      font-size: 15px;
+      padding: 13px 16px;
+      font-family: var(--font-hand);
+      font-size: 20px;
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
@@ -570,12 +605,13 @@
       text-align: center;
       padding: 10px 8px 0;
       color: var(--text-sub);
-      font-size: 13.5px;
+      font-size: 14px;
     }
 
     .footer-title {
-      font-family: 'Gaegu', cursive;
-      font-size: 20px;
+      font-family: var(--font-hand);
+      font-size: 22px;
+      font-weight: 700;
       color: var(--denim);
       margin-top: 6px;
     }
@@ -615,7 +651,7 @@
     }
 
     .modal-counter {
-      font-family: 'Gaegu', cursive;
+      font-family: var(--font-hand);
       font-size: 20px;
       font-weight: 700;
       color: var(--denim);
@@ -657,8 +693,9 @@
 
     .modal-caption {
       text-align: center;
-      font-family: 'Gaegu', cursive;
-      font-size: 20px;
+      font-family: var(--font-hand);
+      font-size: 22px;
+      font-weight: 700;
       color: var(--denim);
       margin-top: 10px;
     }
@@ -677,8 +714,8 @@
       padding: 10px;
       background-color: var(--card-sky);
       color: var(--denim);
-      font-family: 'Gaegu', cursive;
-      font-size: 18px;
+      font-family: var(--font-hand);
+      font-size: 20px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -694,7 +731,6 @@
       padding: 12px 22px;
       border-radius: 999px;
       font-size: 14.5px;
-      font-weight: 700;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       opacity: 0;
       pointer-events: none;
@@ -714,13 +750,11 @@
 
     <!-- ==================== 1. 메인 커버 ==================== -->
     <section class="card cover-card" aria-label="초대장 표지">
-      <!-- 귀여운 햇살 SVG -->
       <svg class="cover-sun deco-float" viewBox="0 0 64 64" fill="none" aria-hidden="true">
         <circle cx="32" cy="32" r="14" fill="#FFD166" />
         <path d="M32 6V13M32 51V58M6 32H13M51 32H58M13.6 13.6L18.6 18.6M45.4 45.4L50.4 50.4M50.4 13.6L45.4 18.6M18.6 45.4L13.6 50.4" stroke="#FFD166" stroke-width="4" stroke-linecap="round" />
       </svg>
 
-      <!-- 반짝이는 별 SVG -->
       <svg class="cover-star-left deco-twinkle" viewBox="0 0 36 36" fill="none" aria-hidden="true">
         <path d="M18 2L21.5 12.5L32 16L21.5 19.5L18 30L14.5 19.5L4 16L14.5 12.5L18 2Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="2" stroke-linejoin="round" />
       </svg>
@@ -738,7 +772,6 @@
       <p class="cover-sub">반짝이는 도영이의 첫돌에 초대합니다</p>
 
       <div class="cover-photo-frame">
-        <!-- 왕관 스티커 SVG -->
         <svg class="sticker-crown" viewBox="0 0 48 48" fill="none" aria-hidden="true">
           <path d="M6 34L10 14L19 23L24 10L29 23L38 14L42 34H6Z" fill="#FFD166" stroke="#2C5E8A" stroke-width="2.5" stroke-linejoin="round" />
           <rect x="6" y="34" width="36" height="6" rx="3" fill="#FFD166" stroke="#2C5E8A" stroke-width="2.5" />
@@ -749,7 +782,6 @@
           <img id="coverPhotoImg" src="" alt="최도영 아기 대표 사진" />
         </div>
 
-        <!-- 하트 스티커 SVG -->
         <svg class="sticker-heart deco-twinkle" viewBox="0 0 40 40" fill="none" aria-hidden="true">
           <path d="M20 34C20 34 6 24.8 6 14.5C6 10.2 9.4 7 13.5 7C16.1 7 18.5 8.4 20 10.5C21.5 8.4 23.9 7 26.5 7C30.6 7 34 10.2 34 14.5C34 24.8 20 34 20 34Z" fill="#FF8FA3" stroke="#2C5E8A" stroke-width="2.4" stroke-linejoin="round" />
         </svg>
@@ -768,7 +800,7 @@
             <path d="M12 21C12 21 19 14.8 19 9.5C19 5.6 15.9 2.5 12 2.5C8.1 2.5 5 5.6 5 9.5C5 14.8 12 21 12 21Z" fill="#FFD166" fill-opacity="0.5" stroke="#2C5E8A" stroke-width="2" />
             <circle cx="12" cy="9.5" r="2.5" fill="#2C5E8A" />
           </svg>
-          <span>파티앳더시그널 (주소: 경기도 고양시 일산서구 탄중로 114-2 2층)</span>
+          <span>경기도 고양시 일산서구 탄중로 114-2 2층</span>
         </div>
       </div>
     </section>
@@ -844,7 +876,7 @@
         </div>
       </div>
 
-      <!-- 2027년 1월 미니 달력 (1월 1일은 금요일) -->
+      <!-- 2027년 1월 미니 달력 -->
       <div class="mini-calendar" aria-label="2027년 1월 달력">
         <div class="cal-month">2027년 1월 · 토요일 오후 1:30</div>
         <div class="cal-grid">
@@ -856,7 +888,6 @@
           <div class="cal-weekday">금</div>
           <div class="cal-weekday sat">토</div>
 
-          <!-- 2027년 1월 1일은 금요일이므로 일~목 5칸 비움 -->
           <div class="cal-day empty"></div>
           <div class="cal-day empty"></div>
           <div class="cal-day empty"></div>
@@ -1003,11 +1034,6 @@
     (function () {
       'use strict';
 
-      /* =====================================================================
-       * 1. 기본 설정 및 사진 데이터
-       *    실제 사진으로 교체할 때는 아래 COVER_PHOTO와 GALLERY_PHOTOS의
-       *    src 값을 실제 이미지 경로(예: './images/photo1.jpg')로 바꿔주세요.
-       * ===================================================================== */
       function createSampleIllustration(opts) {
         var svg =
           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">' +
@@ -1031,7 +1057,6 @@
         return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
       }
 
-      // 귀여운 아기 얼굴 & 테마별 샘플 일러스트 SVG 조각
       function babyFaceArt(hatColor, cheekColor) {
         return (
           '<circle cx="200" cy="195" r="82" fill="#FFE8D6" stroke="#2C5E8A" stroke-width="5"/>' +
@@ -1050,7 +1075,6 @@
         );
       }
 
-      // 대표 커버 사진 (실제 사진 URL로 교체 가능)
       var COVER_PHOTO = createSampleIllustration({
         bg1: '#D8EEFF',
         bg2: '#FFFDF2',
@@ -1058,7 +1082,6 @@
         art: babyFaceArt('#FFD166', '#FF9EAA')
       });
 
-      // 갤러리 사진 12장 (실제 사진 URL 12개로 교체 가능)
       var GALLERY_PHOTOS = [
         {
           src: createSampleIllustration({
@@ -1146,11 +1169,7 @@
         }
       ];
 
-      /* =====================================================================
-       * 2. 대표 사진 렌더링 & 오시는 길 링크 설정
-       * ===================================================================== */
-      var coverImg = document.getElementById('coverPhotoImg');
-      coverImg.src = COVER_PHOTO;
+      document.getElementById('coverPhotoImg').src = COVER_PHOTO;
 
       var VENUE_ADDRESS = '경기도 고양시 일산서구 탄중로 114-2 2층';
       var SEARCH_ADDRESS = '경기도 고양시 일산서구 탄중로 114-2';
@@ -1160,9 +1179,6 @@
       document.getElementById('kakaoMapLink').href =
         'https://map.kakao.com/link/search/' + encodeURIComponent(SEARCH_ADDRESS);
 
-      /* =====================================================================
-       * 3. 실시간 D-Day 카운트다운 (2027-01-02 13:30:00 KST)
-       * ===================================================================== */
       var TARGET_DATE = new Date('2027-01-02T13:30:00+09:00').getTime();
       var elStatus = document.getElementById('ddayStatusPill');
       var elDays = document.getElementById('cdDays');
@@ -1178,7 +1194,6 @@
         var now = Date.now();
         var diff = TARGET_DATE - now;
 
-        // 날짜 기준 D-Day 계산 (KST 기준)
         var todayStart = new Date(now);
         todayStart.setHours(0, 0, 0, 0);
         var eventDayStart = new Date('2027-01-02T00:00:00+09:00').getTime();
@@ -1189,11 +1204,8 @@
           elHours.textContent = '00';
           elMinutes.textContent = '00';
           elSeconds.textContent = '00';
-          if (dayDiff === 0) {
-            elStatus.textContent = 'D-DAY! 오늘 도영이 첫돌이에요 🎉';
-          } else {
-            elStatus.textContent = '축하해주신 모든 분들 감사합니다 💙';
-          }
+          elStatus.textContent =
+            dayDiff === 0 ? 'D-DAY! 오늘 도영이 첫돌이에요 🎉' : '축하해주신 모든 분들 감사합니다 💙';
           return;
         }
 
@@ -1207,19 +1219,13 @@
         elMinutes.textContent = pad2(minutes);
         elSeconds.textContent = pad2(seconds);
 
-        if (dayDiff === 0) {
-          elStatus.textContent = 'D-DAY! 오늘 오후 1시 30분에 만나요 🎂';
-        } else {
-          elStatus.textContent = '도영이 첫돌까지 D-' + days;
-        }
+        elStatus.textContent =
+          dayDiff === 0 ? 'D-DAY! 오늘 오후 1시 30분에 만나요 🎂' : '도영이 첫돌까지 D-' + days;
       }
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
 
-      /* =====================================================================
-       * 4. 갤러리 12장 렌더링 및 확대 모달
-       * ===================================================================== */
       var galleryGrid = document.getElementById('galleryGrid');
       var modal = document.getElementById('galleryModal');
       var modalImg = document.getElementById('modalImg');
@@ -1286,9 +1292,7 @@
       modalNextBtn.addEventListener('click', showNext);
 
       modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-          closeModal();
-        }
+        if (e.target === modal) closeModal();
       });
 
       document.addEventListener('keydown', function (e) {
@@ -1298,7 +1302,6 @@
         if (e.key === 'ArrowRight') showNext();
       });
 
-      // 모바일 터치 스와이프 지원
       var touchStartX = 0;
       modalTouchArea.addEventListener('touchstart', function (e) {
         touchStartX = e.changedTouches[0].screenX;
@@ -1312,9 +1315,6 @@
         }
       }, { passive: true });
 
-      /* =====================================================================
-       * 5. 주소 복사 및 토스트 알림
-       * ===================================================================== */
       var copyBtn = document.getElementById('copyAddressBtn');
       var toastEl = document.getElementById('toast');
       var toastTimer = null;
