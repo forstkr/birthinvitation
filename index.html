@@ -30,6 +30,13 @@
       font-display: swap;
     }
 
+    @font-face {
+    font-family: 'KotraHope';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+    }
+
     :root {
       --bg-paper: #EFECE3;
       --paper-sheet: #FAF9F5;
@@ -331,7 +338,7 @@
     }
 
     .invite-quote {
-      font-family: var(--font-pen);
+      font-family: 'KotraHope', var(--font-pen); /* ← 이 줄 수정 */
       font-size: clamp(24px, 6.8vw, 29px);
       line-height: 35px;
       color: var(--ink);
